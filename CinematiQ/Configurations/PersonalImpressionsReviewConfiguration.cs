@@ -8,7 +8,7 @@ public class PersonalImpressionsReviewConfiguration : IEntityTypeConfiguration<P
 {
     public void Configure(EntityTypeBuilder<PersonalImpressionsReview> builder)
     {
-        builder.HasKey(s => s.Id);
+        builder.HasKey(s => new {s.UserId, s.MovieId});
 
         builder.HasOne(pr => pr.Movie)
             .WithMany(m => m.PersonalImpressionsReviews)

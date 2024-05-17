@@ -8,7 +8,7 @@ public class MovieMarkerConfiguration : IEntityTypeConfiguration<MovieMarker>
 {
     public void Configure(EntityTypeBuilder<MovieMarker> builder)
     {
-        builder.HasKey(m => m.Id);
+        builder.HasKey(m => new {m.UserId, m.MovieId});
         
         builder.HasOne(l => l.Movie)
             .WithMany()

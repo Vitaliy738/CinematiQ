@@ -5,12 +5,28 @@
       "PackagePath": "staticwebassets\\CinematiQ.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Home\\index.css",
+      "PackagePath": "staticwebassets\\css\\Home\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\nav.css",
+      "PackagePath": "staticwebassets\\css\\nav.css"
+    },
+    {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Glass.svg",
+      "PackagePath": "staticwebassets\\images\\Glass.svg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Rectangle 9.jpg",
+      "PackagePath": "staticwebassets\\images\\Rectangle 9.jpg"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\background1.jpg",
@@ -43,6 +59,14 @@
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\background_serial.jpg",
       "PackagePath": "staticwebassets\\images\\background_serial.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Профіль.svg",
+      "PackagePath": "staticwebassets\\images\\Профіль.svg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\колокол.svg",
+      "PackagePath": "staticwebassets\\images\\колокол.svg"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\signalr.js",

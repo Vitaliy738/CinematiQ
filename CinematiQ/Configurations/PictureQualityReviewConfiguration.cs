@@ -8,7 +8,7 @@ public class PictureQualityReviewConfiguration : IEntityTypeConfiguration<Pictur
 {
     public void Configure(EntityTypeBuilder<PictureQualityReview> builder)
     {
-        builder.HasKey(s => s.Id);
+        builder.HasKey(s => new {s.UserId, s.MovieId});
 
         builder.HasOne(pr => pr.Movie)
             .WithMany(m => m.PictureQualityReviews)

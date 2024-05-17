@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  background: #09161C;
 }
 
 @media (min-width: 768px) {
@@ -18,5 +19,7 @@ html {
 }
 
 body {
+  color: white;
   margin-bottom: 60px;
+  background: #09161C;
 }

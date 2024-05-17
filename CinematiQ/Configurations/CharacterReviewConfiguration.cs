@@ -8,7 +8,7 @@ public class CharacterReviewConfiguration : IEntityTypeConfiguration<CharacterRe
 {
     public void Configure(EntityTypeBuilder<CharacterReview> builder)
     {
-        builder.HasKey(s => s.Id);
+        builder.HasKey(s => new {s.UserId, s.MovieId});
 
         builder.HasOne(pr => pr.Movie)
             .WithMany(m => m.CharacterReviews)
