@@ -13,11 +13,11 @@ public class PlotReviewConfiguration : IEntityTypeConfiguration<PlotReview>
         builder.HasOne(pr => pr.Movie)
             .WithMany(m => m.PlotReviews)
             .HasForeignKey(pr => pr.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(pr => pr.User)
             .WithMany(u => u.PlotReviews)
             .HasForeignKey(pr => pr.UserId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

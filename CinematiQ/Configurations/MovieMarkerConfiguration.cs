@@ -13,11 +13,11 @@ public class MovieMarkerConfiguration : IEntityTypeConfiguration<MovieMarker>
         builder.HasOne(l => l.Movie)
             .WithMany()
             .HasForeignKey(m => m.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasOne(m => m.User)
             .WithMany(u => u.MovieMarkers)
             .HasForeignKey(m => m.UserId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -13,11 +13,11 @@ public class LastWatchedMovieConfiguration : IEntityTypeConfiguration<LastWatche
         builder.HasOne(l => l.Movie)
             .WithMany()
             .HasForeignKey(l => l.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasOne(l => l.User)
             .WithMany(u => u.LastWatchedMovies)
             .HasForeignKey(l => l.UserId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

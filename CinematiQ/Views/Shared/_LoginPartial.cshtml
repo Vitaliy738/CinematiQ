@@ -3,36 +3,38 @@
 @inject SignInManager<ApplicationIdentityUser> SignInManager
 @inject UserManager<ApplicationIdentityUser> UserManager
 
+<style>
+    .user-icon {
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    
+    .user-icon img {
+        display: block;
+        transition: all 0.3s ease;
+    }
+    
+    .user-icon:hover img {
+        filter: brightness(0.8); /* Slightly darkens the image */
+        border: 1px solid #fff;  /* Adds a white border */
+        border-radius: 5px;      /* Optional: adds rounded corners to the border */
+    }
+
+</style>
+
 <div class="btn-group">
-    <div class="dropdown">
-        <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="user-icons">
-                <img src="~/images/Профіль.svg" alt="User Icon">
-            </div>
-        </button>
-        <ul class="dropdown-menu">
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-                </li>
-                <li class="nav-item">
-                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button type="submit" class="nav-link btn btn-link text-white">Logout</button>
-                    </form>
-                </li>
-            }
-            else
-            {
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                </li>
-            }
-        </ul>
-    </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a href="#">
+            <img src="~/images/Профіль.svg" alt="User Icon">
+        </a>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Login" class="user-icon">
+            <img src="~/images/Профіль.svg" alt="User Icon">
+        </a>
+    }
 </div>
 
 @* <ul class="navbar-nav"> *@

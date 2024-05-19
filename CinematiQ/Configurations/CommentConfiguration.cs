@@ -13,7 +13,7 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
         builder.HasOne(c => c.Movie)
             .WithMany(m => m.Comments)
             .HasForeignKey(r => r.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasOne(c => c.User)
             .WithMany(u => u.Comments)

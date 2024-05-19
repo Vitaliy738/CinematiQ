@@ -5,8 +5,24 @@
       "PackagePath": "staticwebassets\\CinematiQ.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Error\\error.css",
+      "PackagePath": "staticwebassets\\css\\Error\\error.css"
+    },
+    {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Home\\index.css",
       "PackagePath": "staticwebassets\\css\\Home\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Login\\login.css",
+      "PackagePath": "staticwebassets\\css\\Login\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Privacy\\privacy.css",
+      "PackagePath": "staticwebassets\\css\\Privacy\\privacy.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Register\\register.css",
+      "PackagePath": "staticwebassets\\css\\Register\\register.css"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\nav.css",
@@ -23,6 +39,10 @@
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Glass.svg",
       "PackagePath": "staticwebassets\\images\\Glass.svg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Glass_white.svg",
+      "PackagePath": "staticwebassets\\images\\Glass_white.svg"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Rectangle 9.jpg",
@@ -43,6 +63,10 @@
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\background4.jpg",
       "PackagePath": "staticwebassets\\images\\background4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\background_404.png",
+      "PackagePath": "staticwebassets\\images\\background_404.png"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\background_anime.jpg",

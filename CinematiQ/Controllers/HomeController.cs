@@ -28,13 +28,23 @@ namespace CinematiQ.Controllers
         
         public IActionResult Error404()
         {
-            return View();
+            return View("404");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        
+        [Route("Home/StatusCode")]
+        public IActionResult StatusCodePage(int code)
+        {
+            if (code == 404)
+            {
+                return View("404");
+            }
+            return View("Error");
         }
     }
 }

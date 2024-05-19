@@ -13,11 +13,11 @@ public class PersonalImpressionsReviewConfiguration : IEntityTypeConfiguration<P
         builder.HasOne(pr => pr.Movie)
             .WithMany(m => m.PersonalImpressionsReviews)
             .HasForeignKey(pr => pr.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(pr => pr.User)
             .WithMany(u => u.PersonalImpressionsReviews)
             .HasForeignKey(pr => pr.UserId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

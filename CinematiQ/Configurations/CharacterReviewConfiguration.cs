@@ -13,11 +13,11 @@ public class CharacterReviewConfiguration : IEntityTypeConfiguration<CharacterRe
         builder.HasOne(pr => pr.Movie)
             .WithMany(m => m.CharacterReviews)
             .HasForeignKey(pr => pr.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(pr => pr.User)
             .WithMany(u => u.CharacterReviews)
             .HasForeignKey(pr => pr.UserId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -10,45 +10,55 @@
     <link rel="stylesheet" href="~/CinematiQ.styles.css" asp-append-version="true" />
 </head>
 <body>
-
-<nav class="header">
-    <div class="logo">CINEMATIQ</div>  @* помогите *@
-    <div class="search-bar">
-        <input type="text" placeholder="Пошук...">
-        <button type="button">
-            <img src="images/Glass.svg" alt="Search Icon">
-        </button>
+<div class="wrap">
+    <div class="wrap-main wrap-center">
+        <header class="header fx-row fx-middle">
+            <div class="logo">CINEMATIQ</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Пошук...">
+                <button type="button">
+                    <img src="/images/Glass_white.svg" alt="Search Icon">
+                </button>
+            </div>
+           
+            <div class="user-icons">
+                <img src="~/images/колокол.svg" alt="Notification Icon">
+                <partial name="_LoginPartial"/>
+            </div> 
+        </header>
+        <div class="carou-sect">
+            <ul class="menunav_top">
+                <div class="left-nav">
+                    <li><a asp-controller="Home" asp-action="Index">Головна</a></li>
+                    <li><a href="">Новинки</a></li>
+                    <li><a href="">Анонси</a></li>
+                </div>
+                <div class="center-nav">
+                    <li><a href="">Фільми</a></li>
+                    <li><a href="">Серіали</a></li>
+                    <li><a href="">Мультфільми</a></li>
+                    <li><a href="">Аніме</a></li>
+                </div>
+                <div class="right-nav">
+                    <li><a href="">Закладки</a></li>
+                </div>
+            </ul>
+        </div>
+        <div class="carou-sect">
+            <ul class="menunav_top">
+                <div class="left-nav">
+                    <li><a asp-controller="Movie" asp-action="Index">Фільми</a></li>
+                    <li><a asp-controller="Country" asp-action="Index">Країни</a></li>
+                    <li><a asp-controller="Genre" asp-action="Index">Жанри</a></li>
+                </div>
+            </ul>
+        </div>
+        <div class="cols fx-row">
+            <main role="main" class="fx-1">
+                @RenderBody()
+            </main>
+        </div>
     </div>
-   
-    <div class="user-icons">
-        <img src="~/images/колокол.svg" alt="Notification Icon">
-        <partial name="_LoginPartial"/>
-    </div> 
-</nav>
-<nav>
-    <div class="nav-bar">
-        <div class="nav-section">
-            <a href="#">Головна</a>
-            <a href="#">Новинки</a>
-            <a asp-controller="Home" asp-action="Error404">Анонси</a>
-        </div>
-        <div class="nav-section">
-            <a href="#">Фільми</a>
-            <a href="#">Серіали</a>
-            <a href="#">Мультфільми</a>
-            <a href="#">Аніме</a>
-        </div>
-        <div class="nav-section">
-            <a href="#">Закладки</a>
-        </div>
-    </div>
-</nav>
-
-
-<div>
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
 </div>
 
 <script src="~/js/signalr.js"></script>

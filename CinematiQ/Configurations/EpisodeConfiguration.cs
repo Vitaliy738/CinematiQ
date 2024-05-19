@@ -13,6 +13,6 @@ public class EpisodeConfiguration : IEntityTypeConfiguration<Episode>
         builder.HasOne(e => e.Season)
             .WithMany(s => s.Episodes)
             .HasForeignKey(e => e.SeasonId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

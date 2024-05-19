@@ -1,0 +1,208 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using CinematiQ.Data;
+using CinematiQ.Models.Entities;
+
+namespace CinematiQ.Controllers
+{
+    public class MovieController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public MovieController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        class CreateMovieVM
+        {
+            public Movie Movie { get; set; }
+            public List<string> SelectedGenres { get; set; }
+            public List<string> SelectedCounties { get; set; }
+        }
+
+        // GET: Movie
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Movies.ToListAsync());
+        }
+
+        // GET: Movie/Details/5
+        public async Task<IActionResult> Details(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movie = await _context.Movies
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
+        }
+
+        // GET: Movie/Create
+        public IActionResult Create()
+        {
+            ViewBag.MovieTypeList = GetMovieTypeSelectList();
+            ViewBag.MovieStatusList = GetMovieStatusSelectList();
+            ViewBag.Genres = new SelectList(_context.Genres.AsNoTracking(), "Id", "Title");
+            ViewBag.Countries = new SelectList(_context.Countries.AsNoTracking(), "Id", "Name");
+            return View();
+        }
+        
+        private SelectList GetMovieTypeSelectList()
+        {
+            var values = Enum.GetValues(typeof(MovieType)).Cast<MovieType>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString()
+            }).ToList();
+            return new SelectList(values, "Value", "Text");
+        }
+        
+        private SelectList GetMovieStatusSelectList()
+        {
+            var values = Enum.GetValues(typeof(MovieStatus)).Cast<MovieStatus>().Select(v => new SelectListItem
+            {
+                Text = v.ToString(),
+                Value = ((int)v).ToString()
+            }).ToList();
+            return new SelectList(values, "Value", "Text");
+        }
+
+        // POST: Movie/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Title,AlterTitle,Poster,Thumbnail,Description,ShortDescription,YearOfRelease,Studio,MovieType,MovieStatus,Trailer")] Movie movie, string[] genres, string[] countries)
+        {
+            if (ModelState.IsValid)
+            {
+                movie.Genres = _context.Genres.Where(g => genres.Contains(g.Id)).ToList();
+                movie.Countries = _context.Countries.Where(c => countries.Contains(c.Id)).ToList();
+                
+                _context.Add(movie);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.MovieTypeList = GetMovieTypeSelectList();
+            ViewBag.MovieStatusList = GetMovieStatusSelectList();
+            ViewBag.Genres = new SelectList(_context.Genres.AsNoTracking(), "Id", "Title");
+            ViewBag.Countries = new SelectList(_context.Countries.AsNoTracking(), "Id", "Name");
+            return View(movie);
+        }
+
+        // GET: Movie/Edit/5
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Movie movie = new Movie();
+
+            movie = await _context.Movies.FindAsync(id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            
+            ViewBag.MovieTypeList = GetMovieTypeSelectList();
+            ViewBag.MovieStatusList = GetMovieStatusSelectList();
+            ViewBag.Genres = new SelectList(_context.Genres.AsNoTracking(), "Id", "Title");
+            ViewBag.Countries = new SelectList(_context.Countries.AsNoTracking(), "Id", "Name");
+
+            return View(movie);
+        }
+
+        // POST: Movie/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Title,AlterTitle,Poster,Thumbnail,Description,ShortDescription,YearOfRelease,Studio,MovieType,MovieStatus,Trailer")] Movie movie, string[] genres, string[] countries)
+        {
+            if (id != movie.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    movie.Genres = _context.Genres.Where(g => genres.Contains(g.Id)).ToList();
+                    movie.Countries = _context.Countries.Where(c => countries.Contains(c.Id)).ToList();
+                    _context.Update(movie);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MovieExists(movie.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            
+            ViewBag.MovieTypeList = GetMovieTypeSelectList();
+            ViewBag.MovieStatusList = GetMovieStatusSelectList();
+            ViewBag.Genres = new SelectList(_context.Genres.AsNoTracking(), "Id", "Title");
+            ViewBag.Countries = new SelectList(_context.Countries.AsNoTracking(), "Id", "Name");
+            return View(movie);
+        }
+
+        // GET: Movie/Delete/5
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movie = await _context.Movies
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
+        }
+
+        // POST: Movie/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie != null)
+            {
+                _context.Movies.Remove(movie);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool MovieExists(string id)
+        {
+            return _context.Movies.Any(e => e.Id == id);
+        }
+    }
+}

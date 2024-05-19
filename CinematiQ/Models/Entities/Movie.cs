@@ -21,7 +21,7 @@ namespace CinematiQ.Models.Entities
     {
         [Required]
         [Display(Name = "ID")]
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         
         [Required]
         [Display(Name = "Назва")]
@@ -43,29 +43,29 @@ namespace CinematiQ.Models.Entities
         public string? ShortDescription { get; set; }
         
         [Display(Name = "Оцінки сюжету")]
-        public List<PlotReview>? PlotReviews { get; set; }
+        public List<PlotReview>? PlotReviews { get; set; } = new(); 
         
         [Display(Name = "Оцінки якості картинки")]
-        public List<PictureQualityReview>? PictureQualityReviews { get; set; }
+        public List<PictureQualityReview>? PictureQualityReviews { get; set; } = new(); 
         
         [Display(Name = "Оцінки персонажів")]
-        public List<CharacterReview>? CharacterReviews { get; set; }
+        public List<CharacterReview>? CharacterReviews { get; set; } = new(); 
         
         [Display(Name = "Оцінки власних вражень")]
-        public List<PersonalImpressionsReview>? PersonalImpressionsReviews { get; set; }
+        public List<PersonalImpressionsReview>? PersonalImpressionsReviews { get; set; } = new(); 
         
         [Display(Name = "Жанри")]
-        public List<Genre>? Genres { get; set; }
+        public List<Genre>? Genres { get; set; } = new(); 
         
         [Display(Name = "Сезони")]
-        public List<Season>? Seasons { get; set; }
+        public List<Season>? Seasons { get; set; } = new(); 
         
         [Required]
         [Display(Name = "Рік релізу")]
         public int YearOfRelease { get; set; }
         
         [Display(Name = "Країни")]
-        public List<Country>? Countries { get; set; }
+        public List<Country>? Countries { get; set; } = new(); 
         
         [Required]
         [Display(Name = "Студія")]
@@ -83,6 +83,6 @@ namespace CinematiQ.Models.Entities
         public string? Trailer { get; set; }
         
         [Display(Name = "Коментарі")]
-        public List<Comment>? Comments { get; set; }
+        public List<Comment>? Comments { get; set; } = new(); 
     }
 }

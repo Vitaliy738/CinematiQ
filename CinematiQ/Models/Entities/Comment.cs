@@ -25,12 +25,10 @@ namespace CinematiQ.Models.Entities
         [Display(Name = "Фільм до якого опубліковано коментар")]
         public Movie Movie { get; set; }
         
-        [Required]
         [Display(Name = "ID користувача, який опублікував коментар")]
-        public string UserId { get; set;}
+        public string? UserId { get; set;}
         
-        [Required]
         [Display(Name = "Користувач, який опублікував коментар")]
-        public ApplicationIdentityUser User { get; set;}
+        public ApplicationIdentityUser? User { get; set;}
     }
 }

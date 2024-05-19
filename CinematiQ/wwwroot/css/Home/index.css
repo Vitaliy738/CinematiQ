@@ -15,192 +15,47 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-header {
-    background-color: #132933;
-    padding: 1px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 40px;
-    font-weight: bold;
-    color: #E50914;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 300px;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 5px 35px 5px 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-}
-
-.search-bar button {
-    position: absolute;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-bar button img {
-    width: 20px;
-    height: 20px;
-}
-
-.user-icons {
-    display: flex;
-    align-items: center;
-}
-
-.user-icons img {
-    width: 32px;
-    height: 32px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.nav-bar {
-    background-color: #09161C;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-
-.nav-bar .nav-section {
-    display: flex;
-}
-
-.nav-bar .nav-section a {
-    color: #fff;
-    text-decoration: underline;
-    margin-right: 15px;
-}
-
-.nav-bar .nav-section a:last-child {
-    margin-right: 0;
-}
-
-.search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 300px;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 5px 35px 5px 10px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-}
-
-.search-bar button {
-    position: absolute;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-bar button img {
-    width: 20px;
-    height: 20px;
-}
-
-
-
-.content-wrapper {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    min-height: 100vh;
-}
-
-.content {
-    background-color: #09161C;
-    border-radius: 12px;
-    padding: 25px;
-    max-width: 1000px;
-    width: 100%;
-}
-
-.category {
-    margin-bottom: 20px;
-}
-
-.category h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
-    color: white;
-}
-
-.category .items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.category .item {
-    width: 150px;
-    height: 225px;
-    background-color: #132933;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.category .item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.item {
-    position: relative;
-}
-
-.item-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 5px;
-    text-align: center;
     color: #2E859E;
-    text-decoration: underline;
 }
 
-.footer[b-6ps4271rrg] {
-    background-color: #09161C;
-    width: 100%;
-    height: 8%;
-    padding: 10px 20px;
-    text-align: left;
-    position: fixed;
-    bottom: 0;
-}
+/*.category {*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.category h2 {*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 24px;*/
+/*    color: white;*/
+/*}*/
+
+/*.category .items {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*.category .item {*/
+/*    width: 150px;*/
+/*    height: 225px;*/
+/*    background-color: #132933;*/
+/*    border-radius: 12px;*/
+/*    overflow: hidden;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+
+/*.category .item img {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*    object-fit: cover;*/
+/*    flex-grow: 1;*/
+/*}*/
+
+/*.item-info {*/
+/*    padding: 5px;*/
+/*    text-align: center;*/
+/*    color: #2E859E;*/
+/*    text-decoration: underline;*/
+/*    background-color: rgba(0, 0, 0, 0.5);*/
+/*    border-top: 1px solid #ccc;*/
+/*}*/

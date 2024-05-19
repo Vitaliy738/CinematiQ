@@ -13,11 +13,11 @@ public class PictureQualityReviewConfiguration : IEntityTypeConfiguration<Pictur
         builder.HasOne(pr => pr.Movie)
             .WithMany(m => m.PictureQualityReviews)
             .HasForeignKey(pr => pr.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasOne(pr => pr.User)
             .WithMany(u => u.PictureQualityReviews)
             .HasForeignKey(pr => pr.UserId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

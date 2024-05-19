@@ -13,11 +13,11 @@ public class SeasonConfiguration : IEntityTypeConfiguration<Season>
         builder.HasOne(s => s.Movie)
             .WithMany(m => m.Seasons)
             .HasForeignKey(s => s.MovieId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
 
         builder.HasMany(s => s.Episodes)
             .WithOne(e => e.Season)
             .HasForeignKey(s => s.SeasonId)
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

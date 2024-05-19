@@ -1,0 +1,101 @@
+@model CinematiQ.Models.Entities.Movie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редагування</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlterTitle" class="control-label"></label>
+                <input asp-for="AlterTitle" class="form-control" />
+                <span asp-validation-for="AlterTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poster" class="control-label"></label>
+                <input asp-for="Poster" class="form-control" />
+                <span asp-validation-for="Poster" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thumbnail" class="control-label"></label>
+                <input asp-for="Thumbnail" class="form-control" />
+                <span asp-validation-for="Thumbnail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDescription" class="control-label"></label>
+                <input asp-for="ShortDescription" class="form-control" />
+                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfRelease" class="control-label"></label>
+                <input asp-for="YearOfRelease" class="form-control" />
+                <span asp-validation-for="YearOfRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Studio" class="control-label"></label>
+                <input asp-for="Studio" class="form-control" />
+                <span asp-validation-for="Studio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieType" class="control-label"></label>
+                <select asp-for="MovieType" class="form-control" asp-items="ViewBag.MovieTypeList"></select>
+                <span asp-validation-for="MovieType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieStatus" class="control-label"></label>
+                <select asp-for="MovieStatus" class="form-control" asp-items="ViewBag.MovieStatusList"></select>
+                <span asp-validation-for="MovieStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trailer" class="control-label"></label>
+                <input asp-for="Trailer" class="form-control" />
+                <span asp-validation-for="Trailer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genres" class="control-label">Жанри</label>
+                <select asp-for="Genres" class="form-control" multiple="multiple" name="genres">
+                    @foreach (var item in (SelectList)ViewBag.Genres)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="Genres" class="text-danger"></span>
+            </div>
+                        
+            <div class="form-group">
+                <label asp-for="Countries" class="control-label">Країни</label>
+                <select asp-for="Countries" class="form-control" multiple="multiple" name="countries">
+                    @foreach (var item in (SelectList)ViewBag.Countries)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+                <span asp-validation-for="Countries" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

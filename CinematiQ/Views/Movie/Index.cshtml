@@ -1,0 +1,53 @@
+@model IEnumerable<CinematiQ.Models.Entities.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Всі доступні фільми</h1>
+
+<p>
+    <a asp-action="Create">Додати новий фільм</a>
+</p>
+<table class="table text-white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfRelease)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfRelease)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieStatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

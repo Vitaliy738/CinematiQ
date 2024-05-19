@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\denis\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj": {}
+    "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj": {}
   },
   "projects": {
-    "C:\\Users\\denis\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj": {
+    "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\denis\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj",
+        "projectUniqueName": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj",
         "projectName": "CinematiQ",
-        "projectPath": "C:\\Users\\denis\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj",
-        "packagesPath": "C:\\Users\\denis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\denis\\source\\repos\\CinematiQ\\CinematiQ\\obj\\",
+        "projectPath": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Instal\\Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\denis\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,7 +46,7 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
@@ -64,6 +55,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
