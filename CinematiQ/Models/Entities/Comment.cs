@@ -6,7 +6,7 @@ namespace CinematiQ.Models.Entities
     {
         [Required]
         [Display(Name = "ID")]
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         
         [Required]
         [Display(Name = "Вміст коментаря")]

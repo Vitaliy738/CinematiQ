@@ -25,7 +25,7 @@
 <div class="btn-group">
     @if (SignInManager.IsSignedIn(User))
     {
-        <a href="#">
+        <a asp-area="Identity" asp-page="/Account/Manage/Index">
             <img src="~/images/Профіль.svg" alt="User Icon">
         </a>
     }

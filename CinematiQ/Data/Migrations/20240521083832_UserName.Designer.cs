@@ -4,6 +4,7 @@ using CinematiQ.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CinematiQ.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240521083832_UserName")]
+    partial class UserName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("CharacterReviews", (string)null);
+                    b.ToTable("CharacterReviews");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.Comment", b =>
@@ -68,7 +71,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.Country", b =>
@@ -82,7 +85,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries", (string)null);
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.Episode", b =>
@@ -111,7 +114,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("SeasonId");
 
-                    b.ToTable("Episodes", (string)null);
+                    b.ToTable("Episodes");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.Genre", b =>
@@ -129,7 +132,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres", (string)null);
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.LastWatchedMovie", b =>
@@ -154,7 +157,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("LastWatchedMovies", (string)null);
+                    b.ToTable("LastWatchedMovies");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.Movie", b =>
@@ -201,7 +204,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies", (string)null);
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.MovieMarker", b =>
@@ -222,7 +225,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("MovieMarkers", (string)null);
+                    b.ToTable("MovieMarkers");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.PersonalImpressionsReview", b =>
@@ -243,7 +246,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("PersonalImpressionsReviews", (string)null);
+                    b.ToTable("PersonalImpressionsReviews");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.PictureQualityReview", b =>
@@ -264,7 +267,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("PictureQualityReviews", (string)null);
+                    b.ToTable("PictureQualityReviews");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.PlotReview", b =>
@@ -285,7 +288,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("PlotReviews", (string)null);
+                    b.ToTable("PlotReviews");
                 });
 
             modelBuilder.Entity("CinematiQ.Models.Entities.Season", b =>
@@ -305,7 +308,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Seasons", (string)null);
+                    b.ToTable("Seasons");
                 });
 
             modelBuilder.Entity("CountryMovie", b =>
@@ -320,7 +323,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("CountryMovie", (string)null);
+                    b.ToTable("CountryMovie");
                 });
 
             modelBuilder.Entity("GenreMovie", b =>
@@ -335,7 +338,7 @@ namespace CinematiQ.Data.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("GenreMovie", (string)null);
+                    b.ToTable("GenreMovie");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

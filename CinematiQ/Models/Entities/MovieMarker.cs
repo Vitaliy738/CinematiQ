@@ -14,7 +14,7 @@ namespace CinematiQ.Models.Entities
     
     public class MovieMarker
     {
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         
         [Required]
         [Display(Name = "Категорія закладки")]
