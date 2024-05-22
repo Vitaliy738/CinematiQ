@@ -31,6 +31,16 @@ namespace CinematiQ.Controllers
             return View("404");
         }
 
+        public IActionResult FilterMovie()
+        {
+            return View();
+        }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
