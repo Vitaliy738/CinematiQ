@@ -1,0 +1,109 @@
+@model CinematiQ.Models.ViewModels.FilmsPageVM
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="~/css/Home/index.css" asp-append-version="true" />
+
+@{
+    if (Model.Movies.Any())
+    {
+        <div class="sect">
+            <h2 class="main-title">
+                <a class="sect-header fx-row fx-middle section-title link" asp-controller="Films" asp-action="Movies">Фільми</a>
+            </h2>
+            <div class="sect-content" id="dle-content">
+                @{
+                    foreach (var movie in Model.Movies)
+                    {
+                        <div class="short-item width-16">
+                            <div class="short-cols fx-row">
+                                <a class="short-img img-fit" href="#">
+                                    <img class="lazyloaded" data-src="@movie.Poster" src="@movie.Poster" alt="">
+                                </a>
+                                <div class="th-title truncate" align="center">@movie.Title</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+}
+
+@{
+    if (Model.Series.Any())
+    {
+        <div class="sect">
+            <h2 class="main-title">
+                <a class="sect-header fx-row fx-middle section-title link" asp-controller="Films" asp-action="Series">Серіали</a>
+            </h2>
+            <div class="sect-content" id="dle-content">
+                @{
+                    foreach (var series in Model.Series)
+                    {
+                        <div class="short-item width-16">
+                            <div class="short-cols fx-row">
+                                <a class="short-img img-fit" href="#">
+                                    <img class="lazyloaded" data-src="@series.Poster" src="@series.Poster" alt="">
+                                </a>
+                                <div class="th-title truncate" align="center">@series.Title</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+}
+
+@{
+    if (Model.Cartoons.Any())
+    {
+        <div class="sect">
+            <h2 class="main-title">
+                <a class="sect-header fx-row fx-middle section-title link" asp-controller="Films" asp-action="Cartoons">Мультфільми</a>
+            </h2>
+            <div class="sect-content" id="dle-content">
+                @{
+                    foreach (var cartoon in Model.Cartoons)
+                    {
+                        <div class="short-item width-16">
+                            <div class="short-cols fx-row">
+                                <a class="short-img img-fit" href="#">
+                                    <img class="lazyloaded" data-src="@cartoon.Poster" src="@cartoon.Poster" alt="">
+                                </a>
+                                <div class="th-title truncate" align="center">@cartoon.Title</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+}
+
+@{
+    if (Model.Anime.Any())
+    {
+        <div class="sect">
+            <h2 class="main-title">
+                <a class="sect-header fx-row fx-middle section-title link" asp-controller="Films" asp-action="Anime">Аніме</a>
+            </h2>
+            <div class="sect-content" id="dle-content">
+                @{
+                    foreach (var anime in Model.Anime)
+                    {
+                        <div class="short-item width-16">
+                            <div class="short-cols fx-row">
+                                <a class="short-img img-fit" href="#">
+                                    <img class="lazyloaded" data-src="@anime.Poster" src="@anime.Poster" alt="">
+                                </a>
+                                <div class="th-title truncate" align="center">@anime.Title</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+}

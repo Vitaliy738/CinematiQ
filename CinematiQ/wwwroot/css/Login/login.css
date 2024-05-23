@@ -7,6 +7,7 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    min-height: 100vh;
 }
 
 h2 {
@@ -19,79 +20,15 @@ p{
     font-family: Inter,sans-serif;
 }
 
-.link {
-color: #2E859E;
-}
-
-.login-button {
-    color: #FFFFFF;
-    background-color: #2E859E;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 6px;
-    cursor: pointer;
-}
-.login-button:focus {
-          color: #FFFFFF;
-          background-color: #2E859E;
-          border-color: rgba(255, 255, 255, 0.25);
-          outline: 0;
-          box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-        }
-.login-button:hover {
-                  color: #FFFFFF;
-                  background-color: #2E859E;
-                  border-color: rgba(255, 255, 255, 0.25);
-                  outline: 0;
-                  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-                }
-
-.form-floating > label {
-  color: #FFFFFF;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  padding: 1rem 0.75rem;
-  pointer-events: none;
-  border: 1px solid transparent;
-  transform-origin: 0 0;
-  transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
-}
-.form-control {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #FFFFFF;
-  background-color: #132933;
-  background-clip: padding-box;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.form-control:focus {
-  color: #FFFFFF;
-  background-color: #132933;
-  border-color: rgba(255, 255, 255, 0.25);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
-.register-wrapper {
+.login-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
 }
-.register-container{
+.login-container{
     background-color: #09161C;
     padding: 3rem;
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     margin-bottom: 2rem;
     border-radius: 12px;
 }

@@ -1,7 +1,11 @@
 using CinematiQ.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using CinematiQ.Data;
+using CinematiQ.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinematiQ.Controllers
 {
@@ -9,10 +13,15 @@ namespace CinematiQ.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<ApplicationIdentityUser> _userManager;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, UserManager<ApplicationIdentityUser> userManager, ApplicationDbContext context)
         {
             _logger = logger;
+            _userManager = userManager;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -25,36 +34,26 @@ namespace CinematiQ.Controllers
         {
             return View();
         }
-        
-        public IActionResult Error404()
-        {
-            return View("404");
-        }
 
-        public IActionResult FilterMovie()
+        [Authorize]
+        public async Task<IActionResult> Profile()
         {
-            return View();
-        }
-
-        public IActionResult Profile()
-        {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(int statuscode)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-        
-        [Route("Home/StatusCode")]
-        public IActionResult StatusCodePage(int code)
-        {
-            if (code == 404)
+            if (statuscode == 404)
             {
-                return View("404");
+                return View("NotFound");
             }
-            return View("Error");
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

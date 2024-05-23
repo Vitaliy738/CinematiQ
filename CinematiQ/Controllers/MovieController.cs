@@ -141,9 +141,20 @@ namespace CinematiQ.Controllers
             {
                 try
                 {
-                    movie.Genres = _context.Genres.Where(g => genres.Contains(g.Id)).ToList();
-                    movie.Countries = _context.Countries.Where(c => countries.Contains(c.Id)).ToList();
-                    _context.Update(movie);
+                    var movieToUpdate = await _context.Movies
+                        .Include(m => m.Genres)
+                        .Include(m => m.Countries)
+                        .FirstOrDefaultAsync(m => m.Id == id);
+
+                    if (movieToUpdate == null)
+                    {
+                        return NotFound();
+                    }
+
+                    UpdateMovieProperties(movieToUpdate, movie);
+                    UpdateMovieRelationships(movieToUpdate, genres, countries);
+
+                    _context.Update(movieToUpdate);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -165,6 +176,30 @@ namespace CinematiQ.Controllers
             ViewBag.Genres = new SelectList(_context.Genres.AsNoTracking(), "Id", "Title");
             ViewBag.Countries = new SelectList(_context.Countries.AsNoTracking(), "Id", "Name");
             return View(movie);
+        }
+        
+        private void UpdateMovieProperties(Movie targetMovie, Movie sourceMovie)
+        {
+            targetMovie.Title = sourceMovie.Title;
+            targetMovie.AlterTitle = sourceMovie.AlterTitle;
+            targetMovie.Poster = sourceMovie.Poster;
+            targetMovie.Thumbnail = sourceMovie.Thumbnail;
+            targetMovie.Description = sourceMovie.Description;
+            targetMovie.ShortDescription = sourceMovie.ShortDescription;
+            targetMovie.YearOfRelease = sourceMovie.YearOfRelease;
+            targetMovie.Studio = sourceMovie.Studio;
+            targetMovie.MovieType = sourceMovie.MovieType;
+            targetMovie.MovieStatus = sourceMovie.MovieStatus;
+            targetMovie.Trailer = sourceMovie.Trailer;
+        }
+
+        private void UpdateMovieRelationships(Movie movie, string[] genreIds, string[] countryIds)
+        {
+            movie.Genres.Clear();
+            movie.Genres = _context.Genres.Where(g => genreIds.Contains(g.Id)).ToList();
+
+            movie.Countries.Clear();
+            movie.Countries = _context.Countries.Where(c => countryIds.Contains(c.Id)).ToList();
         }
 
         // GET: Movie/Delete/5

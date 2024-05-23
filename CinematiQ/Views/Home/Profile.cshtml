@@ -1,81 +1,89 @@
-﻿<meta charset="UTF-8">
+﻿@using CinematiQ.Models.Entities
+@model CinematiQ.Models.Entities.ApplicationIdentityUser
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="~/css/Profile/profile.css" asp-append-version="true" />
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="~/js/Chart.js"></script>
+
 <title>Profile</title>
-<h3>Перегляд профілю</h3>
-<div class="breadcrumb">
-    <a asp-controller="Home" asp-action="Index">Головна</a> -> <a asp-controller="Home" asp-action="FilterMovie">Фільми</a>
+
+<div class="mb-4">
+    <h1>Перегляд профілю</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Films" asp-action="Index">Головна</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Профіль</li>
+        </ol>
+    </nav>
+    <hr />
 </div>
+
 <div class="profile-container">
     <div class="profile-info">
-        <img src="/images/Foto profile.png" alt="User Photo" class="profile-photo">
+        <img src="/images/icon_profile.png" alt="User Photo" class="profile-photo">
         <div class="profile-details">
-            <h3>user76543</h3>
+            <h3>@Model.UserName</h3>
             <p>Електронна пошта:</p>
-            <div class="profile-data">Ex*****gmail.com</div>
-            <p>Номер телефону:</p>
-            <div class="profile-data">+123******89</div>
-            <p>Країна, місто:</p>
-            <div class="profile-data">Ukraine, Kyiv</div>
+            <div class="profile-data">@Model.Email</div>
+            @{
+                if (!string.IsNullOrEmpty(Model.PhoneNumber))
+                {
+                    <p>Номер телефону:</p>
+                    <div class="profile-data">@Model.PhoneNumber</div>
+                }
+            }
+            @{
+                if (!string.IsNullOrEmpty(Model.Location))
+                {
+                    <p>Країна, місто:</p>
+                    <div class="profile-data">Ukraine, Kyiv</div>
+                }
+            }
         </div>
-        <button class="edit-button">Редагувати</button>
+        
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="edit-button">Налаштування</a>
+
     </div>
     <div class="statistics">
         <h3>Статистика</h3>
         <div class="stats-details">
             <div class="stats-info">
-                <div class="stat-item"><span class="stat-square watching"></span>Дивлюсь: 2</div>
-                <div class="stat-item"><span class="stat-square planned"></span>В планах: 5</div>
-                <div class="stat-item"><span class="stat-square watched"></span>Переглянуто: 3</div>
-                <div class="stat-item"><span class="stat-square postponed"></span>Відкладено: 2</div>
-                <div class="stat-item"><span class="stat-square dropped"></span>Кинуто: 1</div>
+                <div class="stat-item"><span class="stat-square watching"></span>Дивлюсь: @Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Watching)</div>
+                <div class="stat-item"><span class="stat-square planned"></span>В планах: @Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Planned)</div>
+                <div class="stat-item"><span class="stat-square watched"></span>Переглянуто: @Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Viewed)</div>
+                <div class="stat-item"><span class="stat-square postponed"></span>Відкладено: @Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Postponed)</div>
+                <div class="stat-item"><span class="stat-square dropped"></span>Кинуто: @Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Abandoned)</div>
             </div>
             <div class="stats-chart">
                 <canvas id="myChart" width="400" height="400"></canvas>
             </div>
         </div>
     </div>
-    <div class="recent-views">
-        <h3>Останні перегляди</h3>
-        <ul class="recent-list">
-            <li>
-                <img src="/images/Рипли.png" alt="Pinni">
-                <div>
-                    <p>Pinni</p>
-                    <p class="date">28.10.2023</p>
-                </div>
-            </li>
-            <li>
-                <img src="/images/Дом дракона.png" alt="Дім дракона">
-                <div>
-                    <p>Дім дракона</p>
-                    <p class="date">24.10.2023</p>
-                </div>
-            </li>
-            <li>
-                <img src="/images/Невколупний.png" alt="Невокоплений">
-                <div>
-                    <p>Невокоплений</p>
-                    <p class="date">03.09.2023</p>
-                </div>
-            </li>
-            <li>
-                <img src="/images/Сьогун.png" alt="Сьогун">
-                <div>
-                    <p>Сьогун</p>
-                    <p class="date">11.08.2023</p>
-                </div>
-            </li>
-            <li>
-                <img src="/images/Футурама.png" alt="Футурама">
-                <div>
-                    <p>Футурама</p>
-                    <p class="date">08.06.2023</p>
-                </div>
-            </li>
-        </ul>
-
-    </div>
+    
+    @{
+        if (Model.LastWatchedMovies.Any())
+        {
+            <div class="recent-views">
+                <h3>Останні перегляди</h3>
+                <ul class="recent-list">
+                    @{
+                        foreach (var lastWatched in Model.LastWatchedMovies)
+                        {
+                            <li>
+                                <img src="@lastWatched.Movie.Poster" alt="@lastWatched.Movie.Title">
+                                <div>
+                                    <p>@lastWatched.Movie.Title</p>
+                                    <p class="date">@lastWatched.Date</p>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+    }
 </div>

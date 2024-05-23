@@ -1,0 +1,59 @@
+@model List<CinematiQ.Models.Entities.Movie>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="~/css/Filter/cartoons.css" asp-append-version="true" />
+<script src="~/js/filterMovies.js"></script>
+
+<title>Cartoons</title>
+
+<div class="mb-4">
+    <h1>Дивитись мультфільми у найкращій якості</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Films" asp-action="Index">Головна</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Мультфільми</li>
+        </ol>
+    </nav>
+    <hr />
+</div>
+
+<div>
+    <form>
+        
+    </form>
+</div>
+
+<div class="sect">
+    <div class="sect-content" id="dle-content">
+        @{
+            if (Model.Any())
+            {
+                foreach (var movie in Model)
+                {
+                    <div class="short-item width-16">
+                        <div class="short-cols fx-row">
+                            <a class="short-img img-fit" href="#">
+                                <img class="lazyloaded" data-src="@movie.Poster" src="@movie.Poster" alt="@movie.Title">
+                            </a>
+                            <div class="th-title truncate" align="center">@movie.Title</div>
+                        </div>
+                    </div>  
+                }
+            }
+        }
+        
+    </div>
+</div>
+<div class="pagination">
+    <button class="pagination-arrow" id="prev-page">&lt;</button>
+    <div class="page-numbers">
+        <button class="page-number">1</button>
+        <button class="page-number">2</button>
+        <button class="page-number">3</button>
+        <button class="page-number">4</button>
+        <button class="page-number">5</button>
+        <button class="page-number">6</button>
+    </div>
+    <button class="pagination-arrow" id="next-page">&gt;</button>
+</div>

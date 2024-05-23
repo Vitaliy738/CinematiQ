@@ -9,6 +9,22 @@
       "PackagePath": "staticwebassets\\css\\Error\\error.css"
     },
     {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Filter\\anime.css",
+      "PackagePath": "staticwebassets\\css\\Filter\\anime.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Filter\\cartoons.css",
+      "PackagePath": "staticwebassets\\css\\Filter\\cartoons.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Filter\\movies.css",
+      "PackagePath": "staticwebassets\\css\\Filter\\movies.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Filter\\series.css",
+      "PackagePath": "staticwebassets\\css\\Filter\\series.css"
+    },
+    {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Home\\index.css",
       "PackagePath": "staticwebassets\\css\\Home\\index.css"
     },
@@ -21,6 +37,10 @@
       "PackagePath": "staticwebassets\\css\\Privacy\\privacy.css"
     },
     {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Profile\\profile.css",
+      "PackagePath": "staticwebassets\\css\\Profile\\profile.css"
+    },
+    {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Register\\register.css",
       "PackagePath": "staticwebassets\\css\\Register\\register.css"
     },
@@ -31,14 +51,6 @@
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Glass.svg",
-      "PackagePath": "staticwebassets\\images\\Glass.svg"
-    },
-    {
-      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Glass_white.svg",
-      "PackagePath": "staticwebassets\\images\\Glass_white.svg"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Rectangle 9.jpg",
@@ -81,12 +93,32 @@
       "PackagePath": "staticwebassets\\images\\background_serial.jpg"
     },
     {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\glass.svg",
+      "PackagePath": "staticwebassets\\images\\glass.svg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\glass_white.svg",
+      "PackagePath": "staticwebassets\\images\\glass_white.svg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\icon_profile.png",
+      "PackagePath": "staticwebassets\\images\\icon_profile.png"
+    },
+    {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Профіль.svg",
       "PackagePath": "staticwebassets\\images\\Профіль.svg"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\колокол.svg",
       "PackagePath": "staticwebassets\\images\\колокол.svg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\Chart.js",
+      "PackagePath": "staticwebassets\\js\\Chart.js"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\filterMovies.js",
+      "PackagePath": "staticwebassets\\js\\filterMovies.js"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\signalr.js",

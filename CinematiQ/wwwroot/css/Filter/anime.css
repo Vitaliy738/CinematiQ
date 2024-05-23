@@ -1,12 +1,13 @@
-﻿body {
-    background-image: url('/images/background_movie.jpg');
+body {
+    background-image: url(/images/background_anime.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    color: #2E859E;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100vh;
 }
 
 .container {
@@ -43,26 +44,27 @@
     text-align: center;
 }
 
-    .button:hover, .sub-button:hover {
-        background-color: #0098A7;
-    }
+.button:hover, .sub-button:hover {
+    background-color: #0098A7;
+}
 
 .sub-buttons {
     display: none;
     position: absolute;
     top: 0;
     left: 100%;
-    flex-direction: row; 
-    flex-wrap: nowrap; 
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .toggle {
     display: none;
 }
 
-    .toggle:checked + .button + .sub-buttons {
-        display: flex;
-    }
+.toggle:checked + .button + .sub-buttons {
+    display: flex;
+
+}
 
 
 
@@ -85,7 +87,7 @@
     border-radius: 5px;
 }
 
-    .pagination-arrow:hover,
-    .page-number:hover {
-        background-color: #0098A7;
-    }
+.pagination-arrow:hover,
+.page-number:hover {
+    background-color: #0098A7;
+}

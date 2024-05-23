@@ -28,4 +28,8 @@
     <None Include="wwwroot\css\Error\error.css" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\images\Дом дракона.png" />
+  </ItemGroup>
+
 </Project>

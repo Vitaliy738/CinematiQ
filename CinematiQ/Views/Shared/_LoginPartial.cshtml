@@ -3,59 +3,15 @@
 @inject SignInManager<ApplicationIdentityUser> SignInManager
 @inject UserManager<ApplicationIdentityUser> UserManager
 
-<style>
-    .user-icon {
-        display: inline-block;
-        transition: all 0.3s ease;
-    }
-    
-    .user-icon img {
-        display: block;
-        transition: all 0.3s ease;
-    }
-    
-    .user-icon:hover img {
-        filter: brightness(0.8); /* Slightly darkens the image */
-        border: 1px solid #fff;  /* Adds a white border */
-        border-radius: 5px;      /* Optional: adds rounded corners to the border */
-    }
-
-</style>
-
-<div class="btn-group">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <a asp-area="Identity" asp-page="/Account/Manage/Index">
-            <img src="~/images/Профіль.svg" alt="User Icon">
-        </a>
-    }
-    else
-    {
-        <a asp-area="Identity" asp-page="/Account/Login" class="user-icon">
-            <img src="~/images/Профіль.svg" alt="User Icon">
-        </a>
-    }
-</div>
-
-@* <ul class="navbar-nav"> *@
-@* @if (SignInManager.IsSignedIn(User)) *@
-@* { *@
-@*     <li class="nav-item"> *@
-@*         <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a> *@
-@*     </li> *@
-@*     <li class="nav-item"> *@
-@*         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"> *@
-@*             <button  type="submit" class="nav-link btn btn-link text-white">Logout</button> *@
-@*         </form> *@
-@*     </li> *@
-@* } *@
-@* else *@
-@* { *@
-@*     <li class="nav-item"> *@
-@*         <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a> *@
-@*     </li> *@
-@*     <li class="nav-item"> *@
-@*         <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a> *@
-@*     </li> *@
-@* } *@
-@* </ul> *@
+@if (SignInManager.IsSignedIn(User))
+{
+    <a class="profile" asp-controller="Home" asp-action="Profile">
+        <img src="~/images/Профіль.svg" alt="User Icon">
+    </a>
+}
+else
+{
+    <a class="profile" asp-area="Identity" asp-page="/Account/Login">
+        <img src="~/images/Профіль.svg" alt="User Icon">
+    </a>
+}

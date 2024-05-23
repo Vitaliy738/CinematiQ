@@ -1,17 +1,13 @@
 ﻿body {
-    background-image: url('/images/background_movie.jpg');
+    background-image: url(/images/background1.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    color: #2E859E;
-}
-h3 {
-    font-size: 25px;
-    margin-bottom: 15px;
-    color: #FFFFFF;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    min-height: 100vh;
 }
 .profile-container {
     display: flex;
@@ -27,7 +23,6 @@ h3 {
     margin: 10px;
     width: 300px;
     text-align: center;
-    color: #2E859E;
 }
 
 .profile-photo {
@@ -55,7 +50,6 @@ h3 {
     color: #FFFFFF;
 }
 
-
 .edit-button {
     background-color: #2E859E;
     color: #ffffff;
@@ -67,6 +61,7 @@ h3 {
 
     .edit-button:hover {
         background-color: #0098a7;
+        color: #ffffff;
     }
 
 
