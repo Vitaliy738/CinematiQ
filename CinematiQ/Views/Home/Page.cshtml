@@ -1,0 +1,201 @@
+﻿@using CinematiQ.Models.Entities
+@model CinematiQ.Models.Entities.ApplicationIdentityUser
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="~/css/Page/page.css" asp-append-version="true" />
+<script src="/js/rating.js"></script>
+<title>Сторінка фільму</title>
+
+<div class="movie-container">
+    <div class="movie-header">
+        <img src="/images/Постер.png" alt="Сьогун" class="movie-poster">
+        <div class="movie-info">
+            <h1>Сьогун</h1>
+            <h2>Shogun</h2>
+            <p>
+                <span class="genre">Серіал</span> 
+                <span class="genre">Міні-серіал</span> 
+                <span class="genre">Драми</span> 
+                <span class="genre">Пригоди</span> 
+                <span class="genre">Історичний</span>
+            </p>
+            <div class="info-grid">
+                <p><strong>Вийшла серія:</strong> </p>
+                <span>10 із 10</span>
+                <p><strong>Рік:</strong></p>
+                <span>2024</span>
+                <p><strong>Статус:</strong></p>
+                <span>Вийшов</span>
+                <p><strong>Тип:</strong></p>
+                <span>Серіал</span>
+                <p><strong>Студія:</strong></p>
+                <span>Cinematic10</span>
+                <p><strong>Країна:</strong></p>
+                <span>США</span>
+            </div>
+            
+        </div>
+    </div>
+        <div class="bookmark">
+            <select id="bookmark-select">
+                <option>Не дивлюсь</option>
+                <option>Дивлюсь</option>
+                <option>В планах</option>
+                <option>Переглянуто</option>
+                <option>Відкладено</option>
+                <option>Кинуто</option>
+                <option>Улюблені</option>
+            </select>
+        </div>
+        <div class="movie-description">
+        <h2>ОПИС СЮЖЕТУ «Сьоґун»</h2>
+        <p>У 1600 році безстрашний англійський моряк і протестант Джон Блекторн, лоцман на голландському торговому судні, шукає шлях до Японії, 
+            щоб спробувати витіснити звідти португальських католиків. Після довгих місяців безрезультатних пошуків судно сідає на мілину біля японського узбережжя. 
+            Джон потрапляє на прийом до місцевого феодала Йосі Торанаги, 
+            який перебуває на межі війни з цілою коаліцією інших могутніх домів. 
+            Японський феодал наймає заморського гостя собі на службу, 
+            щоб використати його знання, гармати з корабля та золото для перемоги у війні за владу в країні.
+        </p>
+    </div>
+    <div class="outer-container">
+        <div class="rating-container">
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="8.7">
+                    <span>8.7</span>
+                </div>
+                <div class="rating-details">
+                    <p>Сюжет</p>
+                    <div class="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="6.3">
+                    <span>6.3</span>
+                </div>
+                <div class="rating-details">
+                    <p>Персонажі</p>
+                    <div class="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="9.7">
+                    <span>9.7</span>
+                </div>
+                <div class="rating-details">
+                    <p>Картинка</p>
+                    <div class="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="8.7">
+                    <span>8.7</span>
+                </div>
+                <div class="rating-details">
+                    <p>Власні враження</p>
+                    <div class="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="movie-player">
+        <div class="season-select">
+            <select id="season-select">
+                <option>Сезон 1</option>
+                <option>Сезон 2</option>
+            </select>
+            <select id="episode-select">
+                <option>Серія 1</option>
+                <option>Серія 2</option>
+            </select>
+        </div>
+        <div class="player">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="similar-movies">
+        <h2>Схожі фільми</h2>
+        <div class="similar-movies-grid">
+            <div class="similar-movie-item">
+                <img src="/images/Янголи смерті.png" alt="Японія смерті">
+                <div class="similar-movie-info">
+                    <p><strong>Японія смерті</strong></p>
+                    <p class="alternative-title">Death Angels</p>
+                    <p class="rating">★ 7.1/10</p>
+                </div>
+            </div>
+            <div class="similar-movie-item">
+                <img src="/images/Злочинці.png" alt="Злочинні">
+                <div class="similar-movie-info">
+                    <p><strong>Злочинні</strong></p>
+                    <p class="alternative-title">Criminals</p>
+                    <p class="rating">★ 8.3/10</p>
+                </div>
+            </div>
+            <div class="similar-movie-item">
+                <img src="/images/Арчер.png" alt="Арчер">
+                <div class="similar-movie-info">
+                    <p><strong>Арчер</strong></p>
+                    <p class="alternative-title">Archer</p>
+                    <p class="rating">★ 8.6/10</p>
+                </div>
+            </div>
+            <div class="similar-movie-item">
+                <img src="/images/Барва пурпурова.png" alt="Барва пурпурова">
+                <div class="similar-movie-info">
+                    <p><strong>Барва пурпурова</strong></p>
+                    <p class="alternative-title">The Color Purple</p>
+                    <p class="rating">★ 7.7/10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comments-section">
+        <h2>Відгуки інших користувачів</h2>
+        <textarea placeholder="Напишіть відгук..."></textarea>
+        <button>Відправити</button>
+        <div class="comments">
+            <div class="comment">
+                <img src="/images/Фото профілю Mr.Poper.png" alt="Avatar" class="avatar">
+                <div class="comment-text">
+                    <p><strong>PalanderX</strong> 26 березня 2024</p>
+                    <p>Відмінний серіал! Оригінальна подача, чудова гра акторів. Дуже сподобався!</p>
+                </div>
+            </div>
+            <div class="comment">
+                <img src="/images/Фото профілю.png" alt="Avatar" class="avatar">
+                <div class="comment-text">
+                    <p><strong>Сніжана Олександрова</strong> 23 березня 2024</p>
+                    <p>Класно, що в цьому серіалі продумали все до дрібниць. Окремо хочу відзначити музику, завжди коли слухаю саундтреки просто вражає.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

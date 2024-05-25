@@ -1,0 +1,379 @@
+﻿body {
+    background-image: url(/images/background_movie.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.movie-header {
+    display: flex;
+    align-items: flex-start;
+}
+
+.movie-poster {
+    width: 230px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.movie-info {
+    flex: 1;
+}
+
+.movie-info h1 {
+    margin: 0;
+    color: #fff;
+}
+
+.movie-info h2 {
+    margin: 5px 0 15px;
+    color: #d4d4d4;
+    font-size: 1.2em;
+}
+
+.movie-info p {
+    margin: 5px 0;
+    color: #d4d4d4;
+}
+
+.genre {
+    display: inline-block;
+    background-color: #132933;
+    color: #fff;
+    border-radius: 15px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 5px 20px;
+}
+
+    .info-grid p {
+        margin: 5px 0;
+    }
+
+
+.bookmark {
+    margin-top: 22px;
+    text-align: justify;
+    margin-left: 32px;
+}
+
+    .bookmark select {
+        width: 16%;
+        padding: 5px;
+        background-color: #0b1e26;
+        color: #d4d4d4;
+        border-radius: 5px;
+    }
+
+
+    ]
+.movie-description {
+    margin-top: 20px;
+}
+
+    .movie-description h2 {
+        margin: 0 0 10px 0;
+        color: #fff;
+    }
+
+    .movie-description p {
+        margin: 5px 0;
+        color: #d4d4d4;
+    }
+
+.movie-player {
+    margin-top: 20px;
+    position: relative;
+}
+
+    .movie-player .season-select {
+        position: absolute;
+        left: 21px;
+    }
+
+
+
+.season-select {
+    margin-bottom: 10px;
+}
+
+    .season-select label {
+        margin-right: 10px;
+    }
+
+    .season-select select {
+        padding: 5px;
+        background-color: #132933;
+        color: #d4d4d4;
+        border-radius: 5px;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+
+
+
+
+
+.player {
+    margin-top: 10px;
+}
+
+    .player iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+        border-radius: 10px;
+    }
+
+.similar-movies {
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .similar-movies h2 {
+        margin: 50px 0 10px 0;
+        color: #fff;
+    }
+
+.similar-movies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.similar-movie-item {
+    display: flex;
+    align-items: center;
+    width: 257px;
+    background-color: #132933;
+    border-radius: 10px;
+    color: #d4d4d4;
+    height: 130px;
+}
+
+    .similar-movie-item img {
+        width: auto;
+        height: -webkit-fill-available;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+.similar-movie-info {
+    text-align: left;
+    flex: 1;
+}
+
+    .similar-movie-info p {
+        margin: 5px 0;
+    }
+
+    .similar-movie-info .alternative-title {
+        color: #aaa;
+        font-size: 0.9em;
+    }
+
+    .similar-movie-info .rating {
+        margin-top: 5px;
+        font-size: 1em;
+    }
+
+
+
+
+.comments-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+    .comments-section h2 {
+        margin: 50px 0 10px 0;
+        color: #fff;
+    }
+
+    .comments-section textarea {
+        width: calc(100% - 100px);
+        height: 100px;
+        background-color: #0b1e26;
+        color: #d4d4d4;
+        border-radius: 2px;
+        padding: 10px;
+        margin-bottom: 10px;
+        vertical-align: top;
+    }
+
+    .comments-section button {
+        padding: 10px;
+        background-color: #0b1e26;
+        color: #d4d4d4;
+        border: 0.5px solid #d4d4d4;
+        cursor: pointer;
+        position: relative;
+        top: -10px;
+        margin-left: 81%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+        .comments-section button:hover {
+            background-color: #1a3a46;
+        }
+
+.comments {
+    margin-top: 20px;
+}
+
+.comment {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+    .comment img.avatar {
+        height: 70px;
+        margin-right: 10px;
+    }
+
+    .comment p {
+        margin: 5px 0;
+        color: #d4d4d4;
+    }
+
+        .comment p strong {
+            color: #2E859E;
+            text-decoration: underline;
+        }
+
+    .comment .comment-text {
+        background-color: #0b1e26;
+        border-radius: 10px;
+        padding: 10px;
+        width: calc(100% - 60px);
+        text-align: left;
+    }
+
+
+
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.rating-container {
+    display: flex;
+    justify-content: center;
+    background-color: #10232d;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.rating-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.circle-rating {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+    .circle-rating span {
+        color: #fff;
+        font-size: 1em;
+    }
+
+.rating-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+    .rating-details p {
+        margin: 0 0 5px 0;
+        color: #d4d4d4;
+    }
+
+.star-rating {
+    display: flex;
+    gap: 2px;
+}
+
+    .star-rating span {
+        width: 10px;
+        height: 10px;
+        background-color: #2e3e46;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .star-rating span:hover,
+        .star-rating span:hover ~ span {
+            background-color: #fff;
+        }
+
+.circle-rating::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.circle-rating[data-rating="1"]::before {
+    border-color: #fff;
+    clip-path: polygon(50% 0%, 50% 50%, 0% 50%, 0% 0%);
+}
+
+.circle-rating[data-rating="2"]::before {
+    border-color: #fff;
+    clip-path: polygon(50% 0%, 50% 50%, 100% 50%, 100% 0%);
+}
+
+.circle-rating[data-rating="3"]::before {
+    border-color: #fff;
+    clip-path: polygon(50% 0%, 50% 50%, 100% 50%, 100% 100%, 50% 100%, 50% 50%);
+}
+
+.circle-rating[data-rating="4"]::before {
+    border-color: #fff;
+    clip-path: polygon(50% 0%, 50% 50%, 100% 50%, 100% 100%, 0% 100%, 0% 50%);
+}
+
+.circle-rating[data-rating="5"]::before {
+    border-color: #fff;
+}
