@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CinematiQ.Controllers
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -29,13 +29,6 @@ namespace CinematiQ.Controllers
             
             return View();
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [Authorize]
         public async Task<IActionResult> Profile()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -45,6 +38,121 @@ namespace CinematiQ.Controllers
             }
             return View(user);
         }
+        
+        public async Task<IActionResult> Favorite()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var favorites = await _context
+                .MovieMarkers
+                .AsNoTracking()
+                .Where(m => m.User == user)
+                .Where(m => m.Type == MovieMarkerType.Favorite)
+                .ToListAsync();
+            
+            return View(favorites);
+        }
+        
+        public async Task<IActionResult> Watching()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var favorites = await _context
+                .MovieMarkers
+                .AsNoTracking()
+                .Where(m => m.User == user)
+                .Where(m => m.Type == MovieMarkerType.Watching)
+                .ToListAsync();
+            
+            return View(favorites);
+        }
+        
+        public async Task<IActionResult> Planned()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var favorites = await _context
+                .MovieMarkers
+                .AsNoTracking()
+                .Where(m => m.User == user)
+                .Where(m => m.Type == MovieMarkerType.Planned)
+                .ToListAsync();
+            
+            return View(favorites);
+        }
+        
+        public async Task<IActionResult> Viewed()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var favorites = await _context
+                .MovieMarkers
+                .AsNoTracking()
+                .Where(m => m.User == user)
+                .Where(m => m.Type == MovieMarkerType.Viewed)
+                .ToListAsync();
+            
+            return View(favorites);
+        }
+        
+        public async Task<IActionResult> Postponed()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var favorites = await _context
+                .MovieMarkers
+                .AsNoTracking()
+                .Where(m => m.User == user)
+                .Where(m => m.Type == MovieMarkerType.Postponed)
+                .ToListAsync();
+            
+            return View(favorites);
+        }
+        
+        public async Task<IActionResult> Abandoned()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var favorites = await _context
+                .MovieMarkers
+                .AsNoTracking()
+                .Where(m => m.User == user)
+                .Where(m => m.Type == MovieMarkerType.Abandoned)
+                .ToListAsync();
+            
+            return View(favorites);
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error(int statuscode)

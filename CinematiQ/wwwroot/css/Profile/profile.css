@@ -156,8 +156,16 @@
     }
 
 .date {
-    color: white; /* цвет текста белый */
+    color: white;
 }
 *, ::after, ::before {
     box-sizing: content-box;
+}
+
+.bookmarks-statistic {
+    color: #FFFFFF;
+}
+
+.bookmarks-statistic div:hover {
+    color: #2E859E;
 }

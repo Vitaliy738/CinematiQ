@@ -1,0 +1,30 @@
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    <div class="mb-4">
+        <h3>Користувацькі закладки</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Films" asp-action="Index">Головна</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Закладки</li>
+            </ol>
+        </nav>
+        <hr/>
+    </div>
+    
+
+    <div class="row mb-4">
+        <div class="col">
+            <partial name="_BookmarksNav"/>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
