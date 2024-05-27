@@ -1,0 +1,299 @@
+﻿@using System.Text
+@using CinematiQ.Models.Entities
+@using Microsoft.EntityFrameworkCore
+@model Movie
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="~/css/Page/page.css" asp-append-version="true" />
+<script src="/js/rating.js"></script>
+<title>Сторінка фільму</title>
+
+
+@{
+    if (Model.MovieType == MovieType.Movie)
+    {
+        <style>
+                body {
+                    background-image: url(/images/background_movie.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+            </style>
+    }
+    else if (Model.MovieType == MovieType.Serial)
+    {
+        <style>
+                body {
+                    background-image: url(/images/background_serial.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+            </style>
+    }
+    else if (Model.MovieType == MovieType.Cartoon)
+    {
+        <style>
+                body {
+                    background-image: url(/images/background_cartoon.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+            </style>
+    }
+    else if (Model.MovieType == MovieType.Anime)
+    {
+        <style>
+                body {
+                    background-image: url(/images/background_anime.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+            </style>
+    }
+}
+
+
+<div class="movie-container">
+    <div class="movie-header">
+        <img src="@Model.Poster" alt="@Model.Title" class="movie-poster">
+        <div class="movie-info">
+            <h1>@Model.Title</h1>
+            <h2>@Model.AlterTitle</h2>
+            <p>
+                @{
+                    foreach (var genre in Model.Genres)
+                    {
+                        <span class="genre">@genre.Title</span>
+                    }
+                }
+            </p>
+            <div class="info-grid">
+                <p><strong>Вийшла серія:</strong> </p>
+                <span>10 із 10</span>
+                
+                <p><strong>Рік:</strong></p>
+                <span>@Model.YearOfRelease</span>
+                
+                <p><strong>Статус:</strong></p>
+                <span>@Model.MovieStatus</span>
+                
+                <p><strong>Тип:</strong></p>
+                <span>@Model.MovieType</span>
+                
+                <p><strong>Студія:</strong></p>
+                <span>@Model.Studio</span>
+                
+                <p><strong>Країна:</strong></p>
+                @{
+                    foreach (var country in Model.Countries)
+                    {
+                        <span>@country.Name</span>
+                    }
+                }
+            </div>
+            
+        </div>
+    </div>
+    <div class="bookmark my-3">
+        <select id="bookmark-select">
+            <option>Не дивлюсь</option>
+            <option>Дивлюсь</option>
+            <option>В планах</option>
+            <option>Переглянуто</option>
+            <option>Відкладено</option>
+            <option>Кинуто</option>
+            <option>Улюблені</option>
+        </select>
+    </div>
+    <div class="movie-description">
+        <h2>ОПИС СЮЖЕТУ «@Model.Title»</h2>
+        <p>@Model.Description</p>
+    </div>
+    <div class="outer-container">
+        <div class="rating-container">
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="@(Model.PlotReviews.Any() ? Model.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.PlotReviews.Any() ? Model.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                </div>
+                <div class="rating-details">
+                    <p>Сюжет</p>
+                    <div class="star-rating" id="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="@(Model.CharacterReviews.Any() ? Model.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.CharacterReviews.Any() ? Model.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                </div>
+                <div class="rating-details">
+                    <p>Персонажі</p>
+                    <div class="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="@(Model.PictureQualityReviews.Any() ? Model.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.PictureQualityReviews.Any() ? Model.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                </div>
+                <div class="rating-details">
+                    <p>Картинка</p>
+                    <div class="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-item">
+                <div class="circle-rating" data-rating="@(Model.PersonalImpressionsReviews.Any() ? Model.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.PersonalImpressionsReviews.Any() ? Model.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                </div>
+                <div class="rating-details">
+                    <p>Власні враження</p>
+                    <div class="star-rating">
+                        <span data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                        <span data-value="4"></span>
+                        <span data-value="5"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="movie-player">
+        @{
+            if (Model.Seasons.Any())
+            {
+                <div class="season-select">
+                    <select id="season-select">
+                        @{
+                            int seasonCount = 1;
+                            foreach (var season in Model.Seasons)
+                            {
+                                <option value="@season.Id">@{ ++seasonCount; }</option>
+                            }
+                        }
+                    </select>
+
+                    <select id="episode-select">
+                        <option>Серія 1</option>
+                        <option>Серія 2</option>
+                    </select>
+                </div>
+            }
+        }
+        
+        <div class="player">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="similar-movies">
+        <h2>Схожі фільми</h2>
+        <div class="similar-movies-grid">
+            <div class="similar-movie-item">
+                <img src="/images/Янголи смерті.png" alt="Японія смерті">
+                <div class="similar-movie-info">
+                    <div class="my-3">
+                        <p ><strong>Японія смерті</strong></p>
+                        <p class="alternative-title">Death Angels</p>
+                    </div>
+                    <p class="rating mt-2">★ 7.1/10</p>
+                </div>
+            </div>
+            <div class="similar-movie-item">
+                <img src="/images/Злочинці.png" alt="Злочинні">
+                <div class="similar-movie-info">
+                    <div class="my-3">
+                        <p><strong>Злочинні</strong></p>
+                        <p class="alternative-title">Criminals</p>
+                    </div>
+                    <p class="rating mt-2">★ 8.3/10</p>
+                </div>
+            </div>
+            <div class="similar-movie-item">
+                <img src="/images/Арчер.png" alt="Арчер">
+                <div class="similar-movie-info">
+                    <div class="my-3">
+                        <p><strong>Арчер</strong></p>
+                        <p class="alternative-title">Archer</p>
+                    </div>
+                    <p class="rating mt-2">★ 8.6/10</p>
+                </div>
+            </div>
+            <div class="similar-movie-item">
+                <img src="/images/Барва пурпурова.png" alt="Барва пурпурова">
+                <div class="similar-movie-info">
+                    <div class="my-3">
+                        <p><strong>Барва пурпурова</strong></p>
+                        <p class="alternative-title">The Color Purple</p>
+                    </div>
+                    <p class="rating mt-2">★ 7.7/10</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="comments-section">
+        <h2>Відгуки інших користувачів</h2>
+        <textarea placeholder="Напишіть відгук..."></textarea>
+        <button>Відправити</button>
+        <div class="comments">
+            @{
+                foreach (var comment in Model.Comments)
+                {
+                    <div class="comment">
+                        <img src="/images/icon_profile.png" alt="Avatar" class="avatar">
+                        <div class="comment-text">
+                            <p><strong>@comment.User.UserName</strong>@comment.Date</p>
+                            <p>@comment.Content</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

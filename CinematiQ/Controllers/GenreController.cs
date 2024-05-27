@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinematiQ.Data;
 using CinematiQ.Models.Entities;
+using X.PagedList;
 
 namespace CinematiQ.Controllers
 {
@@ -20,9 +21,9 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Genre
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 15)
         {
-            return View(await _context.Genres.ToListAsync());
+            return View(await _context.Genres.AsNoTracking().ToPagedListAsync(pageNumber, pageSize));
         }
 
         // GET: Genre/Details/5

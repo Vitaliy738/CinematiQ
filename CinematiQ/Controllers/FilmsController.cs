@@ -1,9 +1,11 @@
 using CinematiQ.Data;
 using CinematiQ.Models.Entities;
 using CinematiQ.Models.ViewModels;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace CinematiQ.Controllers;
 
@@ -51,14 +53,14 @@ public class FilmsController : Controller
         return View(filmsPage);
     }
     
-    public async Task<IActionResult> Movies()
+    public async Task<IActionResult> Movies(int pageNumber = 1, int pageSize = 18)
     {
         var movies = await _context.Movies
             .AsNoTracking()
             .Where(m => m.MovieType == MovieType.Movie)
-            .ToListAsync();
+            .ToPagedListAsync(pageNumber, pageSize);
 
-        if (movies.Count == 0)
+        if (!movies.Any())
         {
             return NotFound();
         }
@@ -66,14 +68,14 @@ public class FilmsController : Controller
         return View(movies);
     }
         
-    public async Task<IActionResult> Series()
+    public async Task<IActionResult> Series(int pageNumber = 1, int pageSize = 18)
     {
         var series = await _context.Movies
             .AsNoTracking()
             .Where(m => m.MovieType == MovieType.Serial)
-            .ToListAsync();
+            .ToPagedListAsync(pageNumber, pageSize);
         
-        if (series.Count == 0)
+        if (!series.Any())
         {
             return NotFound();
         }
@@ -81,14 +83,14 @@ public class FilmsController : Controller
         return View(series);
     }
         
-    public async Task<IActionResult> Cartoons()
+    public async Task<IActionResult> Cartoons(int pageNumber = 1, int pageSize = 18)
     {
         var cartoons = await _context.Movies
             .AsNoTracking()
             .Where(m => m.MovieType == MovieType.Cartoon)
-            .ToListAsync();
+            .ToPagedListAsync(pageNumber, pageSize);
         
-        if (cartoons.Count == 0)
+        if (!cartoons.Any())
         {
             return NotFound();
         }
@@ -96,14 +98,14 @@ public class FilmsController : Controller
         return View(cartoons);
     }
         
-    public async Task<IActionResult> Anime()
+    public async Task<IActionResult> Anime(int pageNumber = 1, int pageSize = 18)
     {
         var anime = await _context.Movies
             .AsNoTracking()
             .Where(m => m.MovieType == MovieType.Anime)
-            .ToListAsync();
+            .ToPagedListAsync(pageNumber, pageSize);
         
-        if (anime.Count == 0)
+        if (!anime.Any())
         {
             return NotFound();
         }
@@ -111,14 +113,14 @@ public class FilmsController : Controller
         return View(anime);
     }
 
-    public async Task<IActionResult> Announcements()
+    public async Task<IActionResult> Announcements(int pageNumber = 1, int pageSize = 18)
     {
         var announcements = await _context.Movies
             .AsNoTracking()
             .Where(m => m.MovieStatus == MovieStatus.Announced)
-            .ToListAsync();
+            .ToPagedListAsync(pageNumber, pageSize);
         
-        if (announcements.Count == 0)
+        if (!announcements.Any())
         {
             return NotFound();
         }
@@ -126,19 +128,39 @@ public class FilmsController : Controller
         return View(announcements);
     }
     
-    public async Task<IActionResult> Releases()
+    public async Task<IActionResult> Releases(int pageNumber = 1, int pageSize = 18)
     {
         var releases = await _context.Movies
             .AsNoTracking()
             .Where(m => m.MovieStatus == MovieStatus.Release)
             .OrderBy(m => m.YearOfRelease)
-            .ToListAsync();
+            .ToPagedListAsync(pageNumber, pageSize);
         
-        if (releases.Count == 0)
+        if (!releases.Any())
         {
             return NotFound();
         }
             
         return View(releases);
+    }
+
+    public async Task<IActionResult> Film(string id)
+    {
+        var movie = await _context.Movies
+            .Include(m => m.Countries)
+            .Include(m => m.Genres)
+            .Include(m => m.CharacterReviews)
+            .Include(m => m.PlotReviews)
+            .Include(m => m.PersonalImpressionsReviews)
+            .Include(m => m.PictureQualityReviews)
+            .Include(m => m.Comments)
+            .Include(m => m.Seasons)
+            .FirstOrDefaultAsync(m => m.Id == id);
+        if (movie == null || movie.Id != id)
+        {
+            return NotFound();
+        }
+        
+        return View(movie);
     }
 }

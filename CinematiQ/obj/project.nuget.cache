@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fx5nL2W7bGupcha7as13liduhXDRg7/bLgEDFCCy8bUUWVZF74URFk3q/kzj1coWny/nQJoYvoKOl7nYjJGfdA==",
+  "dgSpecHash": "TDtnLlOLRXdfrVJgTAnPcQqS1rrfj2HAEGqiN113u9k/AGlNjCJOfIuSsIoTxBbmAOF7JK9whS8aH5PJ4mnWPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\CinematiQ.csproj",
   "expectedPackageFiles": [
@@ -178,7 +178,9 @@
     "C:\\Users\\Asus\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+    "C:\\Users\\Asus\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\x.pagedlist\\9.1.2\\x.pagedlist.9.1.2.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\x.pagedlist.mvc.core\\9.1.2\\x.pagedlist.mvc.core.9.1.2.nupkg.sha512"
   ],
   "logs": []
 }

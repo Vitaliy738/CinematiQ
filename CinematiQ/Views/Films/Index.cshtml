@@ -17,7 +17,7 @@
                     {
                         <div class="short-item width-16">
                             <div class="short-cols fx-row">
-                                <a class="short-img img-fit" href="#">
+                                <a class="short-img img-fit" asp-controller="Films" asp-action="Film" asp-route-id="@movie.Id">
                                     <img class="lazyloaded" data-src="@movie.Poster" src="@movie.Poster" alt="">
                                 </a>
                                 <div class="th-title truncate" align="center">@movie.Title</div>
@@ -43,7 +43,7 @@
                     {
                         <div class="short-item width-16">
                             <div class="short-cols fx-row">
-                                <a class="short-img img-fit" href="#">
+                                <a class="short-img img-fit" asp-controller="Films" asp-action="Film" asp-route-id="@series.Id">
                                     <img class="lazyloaded" data-src="@series.Poster" src="@series.Poster" alt="">
                                 </a>
                                 <div class="th-title truncate" align="center">@series.Title</div>
@@ -69,7 +69,7 @@
                     {
                         <div class="short-item width-16">
                             <div class="short-cols fx-row">
-                                <a class="short-img img-fit" href="#">
+                                <a class="short-img img-fit" asp-controller="Films" asp-action="Film" asp-route-id="@cartoon.Id">
                                     <img class="lazyloaded" data-src="@cartoon.Poster" src="@cartoon.Poster" alt="">
                                 </a>
                                 <div class="th-title truncate" align="center">@cartoon.Title</div>
@@ -95,7 +95,7 @@
                     {
                         <div class="short-item width-16">
                             <div class="short-cols fx-row">
-                                <a class="short-img img-fit" href="#">
+                                <a class="short-img img-fit" asp-controller="Films" asp-action="Film" asp-route-id="@anime.Id">
                                     <img class="lazyloaded" data-src="@anime.Poster" src="@anime.Poster" alt="">
                                 </a>
                                 <div class="th-title truncate" align="center">@anime.Title</div>

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CinematiQ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36c1788032609bd663155687642927b4cbacbf44")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f066ca8e6d0e46b199b2f7d41c2371f6534fa855")]
 [assembly: System.Reflection.AssemblyProductAttribute("CinematiQ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CinematiQ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

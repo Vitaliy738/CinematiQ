@@ -1,18 +1,4 @@
-﻿body {
-    background-image: url(/images/background_movie.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center center;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-
-.movie-header {
+﻿.movie-header {
     display: flex;
     align-items: flex-start;
 }
@@ -35,7 +21,7 @@
 
 .movie-info h2 {
     margin: 5px 0 15px;
-    color: #d4d4d4;
+    color: #B3B3B3;
     font-size: 1.2em;
 }
 
@@ -66,7 +52,6 @@
 
 
 .bookmark {
-    margin-top: 22px;
     text-align: justify;
     margin-left: 32px;
 }
@@ -158,11 +143,10 @@
 
 .similar-movie-item {
     display: flex;
-    align-items: center;
     width: 257px;
     background-color: #132933;
     border-radius: 10px;
-    color: #d4d4d4;
+    color: #FFFFFF;
     height: 130px;
 }
 
@@ -183,7 +167,7 @@
     }
 
     .similar-movie-info .alternative-title {
-        color: #aaa;
+        color: #B3B3B3;
         font-size: 0.9em;
     }
 
@@ -324,23 +308,30 @@
 
 .star-rating {
     display: flex;
+    flex-direction: row-reverse;
     gap: 2px;
 }
 
-    .star-rating span {
-        width: 10px;
-        height: 10px;
-        background-color: #2e3e46;
-        border-radius: 50%;
-        display: inline-block;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+.star-rating span {
+    width: 10px;
+    height: 10px;
+    background-color: #2e3e46;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-        .star-rating span:hover,
-        .star-rating span:hover ~ span {
-            background-color: #fff;
-        }
+.star-rating span:hover,
+.star-rating span:hover ~ span {
+    background-color: #fff;
+}
+
+.star-rating .selected,
+.star-rating .selected ~ span {
+    background-color: #fff;
+}
+
 
 .circle-rating::before {
     content: "";

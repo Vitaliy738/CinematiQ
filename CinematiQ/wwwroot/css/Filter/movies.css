@@ -65,29 +65,3 @@
         display: flex;
         
     }
-
-
-
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.pagination-arrow,
-.page-number {
-    background-color: #1d1c1c;
-    color: #FFFFFF;
-    padding: 5px 15px;
-    margin: 2px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-}
-
-    .pagination-arrow:hover,
-    .page-number:hover {
-        background-color: #0098A7;
-    }

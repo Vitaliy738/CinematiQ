@@ -1,23 +1,18 @@
-document.querySelectorAll('.star-rating span').forEach(star => {
-    star.addEventListener('mouseover', function () {
-        let value = this.getAttribute('data-value');
-        let circleRating = this.closest('.rating-item').querySelector('.circle-rating');
-        circleRating.setAttribute('data-rating', value);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('#star-rating span');
 
-    star.addEventListener('mouseleave', function () {
-        let circleRating = this.closest('.rating-item').querySelector('.circle-rating');
-        circleRating.setAttribute('data-rating', circleRating.getAttribute('data-rating-original'));
-    });
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            // Remove the "selected" class from all stars
+            stars.forEach(s => s.classList.remove('selected'));
 
-    star.addEventListener('click', function () {
-        let value = this.getAttribute('data-value');
-        let circleRating = this.closest('.rating-item').querySelector('.circle-rating');
-        circleRating.setAttribute('data-rating', value);
-        circleRating.setAttribute('data-rating-original', value);
+            // Add the "selected" class to the clicked star and all preceding stars
+            star.classList.add('selected');
+            let prev = star.previousElementSibling;
+            while (prev) {
+                prev.classList.add('selected');
+                prev = prev.previousElementSibling;
+            }
+        });
     });
-});
-
-document.querySelectorAll('.circle-rating').forEach(circle => {
-    circle.setAttribute('data-rating-original', circle.getAttribute('data-rating'));
 });

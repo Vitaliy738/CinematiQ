@@ -25,12 +25,20 @@
       "PackagePath": "staticwebassets\\css\\Filter\\series.css"
     },
     {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Home\\bookmarks.css",
+      "PackagePath": "staticwebassets\\css\\Home\\bookmarks.css"
+    },
+    {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Home\\index.css",
       "PackagePath": "staticwebassets\\css\\Home\\index.css"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Login\\login.css",
       "PackagePath": "staticwebassets\\css\\Login\\login.css"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Page\\page.css",
+      "PackagePath": "staticwebassets\\css\\Page\\page.css"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\css\\Privacy\\privacy.css",
@@ -105,8 +113,28 @@
       "PackagePath": "staticwebassets\\images\\icon_profile.png"
     },
     {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Арчер.png",
+      "PackagePath": "staticwebassets\\images\\Арчер.png"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Барва пурпурова.png",
+      "PackagePath": "staticwebassets\\images\\Барва пурпурова.png"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Злочинці.png",
+      "PackagePath": "staticwebassets\\images\\Злочинці.png"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Постер.png",
+      "PackagePath": "staticwebassets\\images\\Постер.png"
+    },
+    {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Профіль.svg",
       "PackagePath": "staticwebassets\\images\\Профіль.svg"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\Янголи смерті.png",
+      "PackagePath": "staticwebassets\\images\\Янголи смерті.png"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\images\\колокол.svg",
@@ -119,6 +147,10 @@
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\filterMovies.js",
       "PackagePath": "staticwebassets\\js\\filterMovies.js"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\rating.js",
+      "PackagePath": "staticwebassets\\js\\rating.js"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\signalr.js",

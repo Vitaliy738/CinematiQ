@@ -623,3 +623,29 @@ a.section-title:hover {
   left: 0;
   margin-top: 0.125rem;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-arrow,
+.page-number {
+  background-color: #1d1c1c;
+  color: #FFFFFF;
+  padding: 5px 15px;
+  margin: 2px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-arrow:hover,
+.page-number:hover,
+.page-number-active {
+  background-color: #0098A7;
+  color: #FFFFFF;
+}

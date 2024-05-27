@@ -1,4 +1,4 @@
-@model List<CinematiQ.Models.Entities.Movie>
+@model X.PagedList.IPagedList<CinematiQ.Models.Entities.Movie>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
                 {
                     <div class="short-item width-16">
                         <div class="short-cols fx-row">
-                            <a class="short-img img-fit" href="#">
+                            <a class="short-img img-fit" asp-controller="Films" asp-action="Film" asp-route-id="@movie.Id">
                                 <img class="lazyloaded" data-src="@movie.Poster" src="@movie.Poster" alt="@movie.Title">
                             </a>
                             <div class="th-title truncate" align="center">@movie.Title</div>
@@ -46,14 +46,30 @@
     </div>
 </div>
 <div class="pagination">
-    <button class="pagination-arrow" id="prev-page">&lt;</button>
-    <div class="page-numbers">
-        <button class="page-number">1</button>
-        <button class="page-number">2</button>
-        <button class="page-number">3</button>
-        <button class="page-number">4</button>
-        <button class="page-number">5</button>
-        <button class="page-number">6</button>
-    </div>
-    <button class="pagination-arrow" id="next-page">&gt;</button>
+    @if (Model.PageCount > 1)
+    {
+        if (Model.HasPreviousPage)
+        {
+            <a class="pagination-arrow" asp-action="Movies" asp-route-pageSize="@Model.PageSize" asp-route-pageNumber="@(Model.PageNumber - 1)">&lt;</a>
+        }
+
+        @for (int i = 1; i <= 5 && i <= Model.PageCount; i++)
+        {
+            <a class="page-number @(i == Model.PageNumber ? "page-number-active" : "")" asp-action="Movies" asp-route-pageSize="@Model.PageSize" asp-route-pageNumber="@i">@i</a>
+        }
+
+        @if (Model.PageCount > 5)
+        {
+            if (Model.PageNumber > 5)
+            {
+                <span class="ellipsis">...</span>
+            }
+            <a class="page-number" asp-action="Movies" asp-route-pageSize="@Model.PageSize" asp-route-pageNumber="@Model.PageCount">@Model.PageCount</a>
+        }
+
+        if (Model.HasNextPage)
+        {
+            <a class="pagination-arrow" asp-action="Movies" asp-route-pageSize="@Model.PageSize" asp-route-pageNumber="@(Model.PageNumber + 1)">&gt;</a>
+        }
+    }
 </div>
