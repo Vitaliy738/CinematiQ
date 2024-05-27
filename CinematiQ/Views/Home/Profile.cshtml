@@ -85,9 +85,9 @@
                         {
                             <li>
                                 <img src="@lastWatched.Movie.Poster" alt="@lastWatched.Movie.Title">
-                                <div>
-                                    <p>@lastWatched.Movie.Title</p>
-                                    <p class="date">@lastWatched.Date</p>
+                                <div >
+                                    <a asp-controller="Films" asp-action="Film" asp-route-id="@lastWatched.Movie.Id">@lastWatched.Movie.Title</a>
+                                    <p class="date">@lastWatched.Date.ToString("dd/MM/yyyy")</p>
                                 </div>
                             </li>
                         }

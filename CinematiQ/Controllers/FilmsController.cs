@@ -146,6 +146,8 @@ public class FilmsController : Controller
 
     public async Task<IActionResult> Film(string id)
     {
+        
+        
         var movie = await _context.Movies
             .Include(m => m.Countries)
             .Include(m => m.Genres)
@@ -156,9 +158,28 @@ public class FilmsController : Controller
             .Include(m => m.Comments)
             .Include(m => m.Seasons)
             .FirstOrDefaultAsync(m => m.Id == id);
+        
         if (movie == null || movie.Id != id)
         {
             return NotFound();
+        }
+
+        if (User.Identity.IsAuthenticated)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            
+            user.LastWatchedMovies.Add(new LastWatchedMovie
+            {
+                Movie = movie,
+                Date = DateTime.Now
+            });
+
+            _context.Update(user);
+            await _context.SaveChangesAsync();
         }
         
         return View(movie);

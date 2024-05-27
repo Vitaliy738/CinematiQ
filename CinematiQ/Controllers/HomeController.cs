@@ -24,20 +24,31 @@ namespace CinematiQ.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            
-            return View();
-        }
         public async Task<IActionResult> Profile()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var userId = _userManager.GetUserId(User);
+            var user = await _context.ApplicationIdentityUser
+                .AsNoTracking()
+                // .Include(u => u.MovieMarkers)
+                .Include(u => u.LastWatchedMovies)
+                .ThenInclude(m => m.Movie)
+                .FirstOrDefaultAsync(u => u.Id == userId);
+
             if (user == null)
             {
                 return NotFound();
             }
+            
+            user.LastWatchedMovies = user.LastWatchedMovies
+                .OrderByDescending(lwm => lwm.Date)
+                .GroupBy(lwm => lwm.Movie.Id)
+                .Select(g => g.First())
+                .Take(5)
+                .ToList();
+
             return View(user);
         }
+
         
         public async Task<IActionResult> Favorite()
         {
