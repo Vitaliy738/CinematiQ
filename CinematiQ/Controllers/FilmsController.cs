@@ -146,8 +146,6 @@ public class FilmsController : Controller
 
     public async Task<IActionResult> Film(string id)
     {
-        
-        
         var movie = await _context.Movies
             .Include(m => m.Countries)
             .Include(m => m.Genres)
