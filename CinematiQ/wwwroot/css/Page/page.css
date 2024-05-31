@@ -184,10 +184,22 @@
     text-align: center;
 }
 
-    .comments-section h2 {
-        margin: 50px 0 10px 0;
-        color: #fff;
+    .comments-section .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        max-width: none;
+        position: relative;
+        flex-direction: column;
+        margin: 0px -40px;
     }
+    
+    
+    .comments-section h2 {
+            margin: 50px 0 10px 0;
+            color: #fff;
+        }
 
     .comments-section textarea {
         width: calc(100% - 100px);
@@ -252,12 +264,16 @@
 
 
 
-.outer-container {
+.rating-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    padding: 0 20px;
+    background-color: #10232d;
+    width: 100%;
     box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 20px;
 }
 
 .rating-container {

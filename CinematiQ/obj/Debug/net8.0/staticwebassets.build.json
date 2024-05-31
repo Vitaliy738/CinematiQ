@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lQ1EMbtjpe+VJGnAGsDd46Y4PgJ6DhiJvw6MxOHhlCE=",
+  "Hash": "SOFqbULCKFrGeMpWAizaoZ9fJx7dlpD36YtH1+8+WNo=",
   "Source": "CinematiQ",
   "BasePath": "_content/CinematiQ",
   "Mode": "Default",
@@ -1860,6 +1860,25 @@
       "OriginalItemSpec": "wwwroot\\js\\Chart.js"
     },
     {
+      "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\comments.js",
+      "SourceId": "CinematiQ",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\",
+      "BasePath": "_content/CinematiQ",
+      "RelativePath": "js/comments.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\comments.js"
+    },
+    {
       "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\filterMovies.js",
       "SourceId": "CinematiQ",
       "SourceType": "Discovered",
@@ -1972,25 +1991,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\signalr.min.js.map"
-    },
-    {
-      "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\site.js",
-      "SourceId": "CinematiQ",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\",
-      "BasePath": "_content/CinematiQ",
-      "RelativePath": "js/site.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
       "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",

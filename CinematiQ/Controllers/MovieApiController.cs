@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CinematiQ.Data;
 using CinematiQ.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace CinematiQ.Controllers
 {
@@ -15,10 +16,12 @@ namespace CinematiQ.Controllers
     public class MovieApiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationIdentityUser> _userManager;
 
-        public MovieApiController(ApplicationDbContext context)
+        public MovieApiController(ApplicationDbContext context, UserManager<ApplicationIdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: api/MovieApi
@@ -99,7 +102,7 @@ namespace CinematiQ.Controllers
 
             return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
         }
-
+        
         // DELETE: api/MovieApi/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMovie(string id)

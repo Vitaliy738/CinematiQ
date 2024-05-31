@@ -16,7 +16,6 @@ namespace CinematiQ.Controllers
         private readonly UserManager<ApplicationIdentityUser> _userManager;
         private readonly ApplicationDbContext _context;
 
-
         public HomeController(ILogger<HomeController> logger, UserManager<ApplicationIdentityUser> userManager, ApplicationDbContext context)
         {
             _logger = logger;

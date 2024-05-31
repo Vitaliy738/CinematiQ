@@ -83,6 +83,7 @@
 }
 
 
+<input id="movieId" type="hidden" value="@Model.Id"/>
 <div class="movie-container">
     <div class="movie-header">
         <img src="@Model.Poster" alt="@Model.Title" class="movie-poster">
@@ -279,8 +280,11 @@
     </div>
     <div class="comments-section">
         <h2>Відгуки інших користувачів</h2>
-        <textarea placeholder="Напишіть відгук..."></textarea>
-        <button>Відправити</button>
+        <div class="input-container">
+            <textarea id="commentArea" placeholder="Напишіть відгук..."></textarea>
+            <button id="sendComment">Відправити</button>
+        </div>
+        
         <div class="comments">
             @{
                 foreach (var comment in Model.Comments)
@@ -288,7 +292,7 @@
                     <div class="comment">
                         <img src="/images/icon_profile.png" alt="Avatar" class="avatar">
                         <div class="comment-text">
-                            <p><strong>@comment.User.UserName</strong>@comment.Date</p>
+                            <p><strong>@comment.User.UserName</strong>@comment.Date.ToString("dd/MM/yyyy")</p>
                             <p>@comment.Content</p>
                         </div>
                     </div>
@@ -297,3 +301,6 @@
         </div>
     </div>
 </div>
+
+<script src="~/js/signalr.js"></script>
+<script src="~/js/comments.js"></script>

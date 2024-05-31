@@ -1,4 +1,5 @@
 using CinematiQ.Data;
+using CinematiQ.Hubs;
 using CinematiQ.Models;
 using CinematiQ.Models.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -45,5 +46,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Films}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+app.MapHub<CommentsHub>("/hub/comments");
 
 app.Run();

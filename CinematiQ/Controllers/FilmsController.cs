@@ -153,7 +153,6 @@ public class FilmsController : Controller
             .Include(m => m.PlotReviews)
             .Include(m => m.PersonalImpressionsReviews)
             .Include(m => m.PictureQualityReviews)
-            .Include(m => m.Comments)
             .Include(m => m.Seasons)
             .FirstOrDefaultAsync(m => m.Id == id);
         
@@ -162,6 +161,17 @@ public class FilmsController : Controller
             return NotFound();
         }
 
+        movie.Comments = await _context.Comments
+            .Include(c => c.User)
+            .Where(c => c.MovieId == movie.Id)
+            .OrderByDescending(c => c.Date)
+            .ToListAsync();
+
+        // TODO Рома, потрібно переробити систему останіх переглядів.
+        // Зараз ця система створює багато непотрібних копій в БД, і це супер не ефективно в перспективі.
+        // Перероби її так, щоб вона перевіряла наявність існування фільму в останіх переглядах користувача і якщо такий фільм існує,
+        // просто онови дату останього перегляду.
+        // Я таблицю з останіми переглядами повністю почистив.
         if (User.Identity.IsAuthenticated)
         {
             var user = await _userManager.GetUserAsync(User);
