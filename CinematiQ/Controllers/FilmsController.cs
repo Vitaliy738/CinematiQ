@@ -1,4 +1,5 @@
 using CinematiQ.Data;
+using CinematiQ.Models;
 using CinematiQ.Models.Entities;
 using CinematiQ.Models.ViewModels;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -146,13 +147,11 @@ public class FilmsController : Controller
 
     public async Task<IActionResult> Film(string id)
     {
+        FilmPageVM pageVm = new FilmPageVM();
+        
         var movie = await _context.Movies
             .Include(m => m.Countries)
             .Include(m => m.Genres)
-            .Include(m => m.CharacterReviews)
-            .Include(m => m.PlotReviews)
-            .Include(m => m.PersonalImpressionsReviews)
-            .Include(m => m.PictureQualityReviews)
             .Include(m => m.Seasons)
             .FirstOrDefaultAsync(m => m.Id == id);
         
@@ -167,29 +166,37 @@ public class FilmsController : Controller
             .OrderByDescending(c => c.Date)
             .ToListAsync();
 
-        // TODO Рома, потрібно переробити систему останіх переглядів.
-        // Зараз ця система створює багато непотрібних копій в БД, і це супер не ефективно в перспективі.
-        // Перероби її так, щоб вона перевіряла наявність існування фільму в останіх переглядах користувача і якщо такий фільм існує,
-        // просто онови дату останього перегляду.
-        // Я таблицю з останіми переглядами повністю почистив.
-        if (User.Identity.IsAuthenticated)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            
-            user.LastWatchedMovies.Add(new LastWatchedMovie
-            {
-                Movie = movie,
-                Date = DateTime.Now
-            });
+        pageVm.Movie = movie;
 
-            _context.Update(user);
-            await _context.SaveChangesAsync();
+        if (!User.Identity.IsAuthenticated)
+        {
+            return View(pageVm);
         }
         
-        return View(movie);
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            return NotFound();
+        }
+            
+        user.LastWatchedMovies.Add(new LastWatchedMovie
+        {
+            Movie = movie,
+            Date = DateTime.Now
+        });
+
+        _context.Update(user);
+        await _context.SaveChangesAsync();
+            
+            
+        var moviemarkType =
+            await _context.MovieMarkers.FirstOrDefaultAsync(m => m.Movie == movie && m.User == user);
+        
+        if (moviemarkType != null)
+        {
+            pageVm.SelectedMoviemarker = (int)moviemarkType.Type;
+        }
+        
+        return View(pageVm);
     }
 }

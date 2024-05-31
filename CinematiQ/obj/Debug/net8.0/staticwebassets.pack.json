@@ -145,12 +145,16 @@
       "PackagePath": "staticwebassets\\js\\Chart.js"
     },
     {
-      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\comments.js",
-      "PackagePath": "staticwebassets\\js\\comments.js"
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\film.js",
+      "PackagePath": "staticwebassets\\js\\film.js"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\filterMovies.js",
       "PackagePath": "staticwebassets\\js\\filterMovies.js"
+    },
+    {
+      "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\moviemarks.js",
+      "PackagePath": "staticwebassets\\js\\moviemarks.js"
     },
     {
       "Id": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\rating.js",

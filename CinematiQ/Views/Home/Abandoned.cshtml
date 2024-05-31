@@ -60,7 +60,7 @@
                         <div class="movie-item">
                             <img src="@movie.Movie.Poster" alt="@movie.Movie.Poster">
                             <div class="movie-details">
-                                <a href="#" class="movie-title">@movie.Movie.Title</a>
+                                <a asp-controller="Films" asp-action="Film" asp-route-id="@movie.Movie.Id" class="movie-title">@movie.Movie.Title</a>
                                 <div class="movie-rating">
                                     <span>?</span> 8,0/10
                                 </div>

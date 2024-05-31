@@ -47,6 +47,6 @@ app.MapControllerRoute(
     pattern: "{controller=Films}/{action=Index}/{id?}");
 app.MapRazorPages();
 
-app.MapHub<CommentsHub>("/hub/comments");
+app.MapHub<FilmHub>("/hub/film");
 
 app.Run();

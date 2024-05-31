@@ -28,7 +28,7 @@ namespace CinematiQ.Controllers
             var userId = _userManager.GetUserId(User);
             var user = await _context.ApplicationIdentityUser
                 .AsNoTracking()
-                // .Include(u => u.MovieMarkers)
+                .Include(u => u.MovieMarkers)
                 .Include(u => u.LastWatchedMovies)
                 .ThenInclude(m => m.Movie)
                 .FirstOrDefaultAsync(u => u.Id == userId);
@@ -60,8 +60,8 @@ namespace CinematiQ.Controllers
             var favorites = await _context
                 .MovieMarkers
                 .AsNoTracking()
-                .Where(m => m.User == user)
-                .Where(m => m.Type == MovieMarkerType.Favorite)
+                .Where(m => m.User == user && m.Type == MovieMarkerType.Favorite)
+                .Include(m => m.Movie)
                 .ToListAsync();
             
             return View(favorites);
@@ -78,8 +78,8 @@ namespace CinematiQ.Controllers
             var favorites = await _context
                 .MovieMarkers
                 .AsNoTracking()
-                .Where(m => m.User == user)
-                .Where(m => m.Type == MovieMarkerType.Watching)
+                .Where(m => m.User == user && m.Type == MovieMarkerType.Watching)
+                .Include(m => m.Movie)
                 .ToListAsync();
             
             return View(favorites);
@@ -96,8 +96,8 @@ namespace CinematiQ.Controllers
             var favorites = await _context
                 .MovieMarkers
                 .AsNoTracking()
-                .Where(m => m.User == user)
-                .Where(m => m.Type == MovieMarkerType.Planned)
+                .Where(m => m.User == user && m.Type == MovieMarkerType.Planned)
+                .Include(m => m.Movie)
                 .ToListAsync();
             
             return View(favorites);
@@ -114,8 +114,8 @@ namespace CinematiQ.Controllers
             var favorites = await _context
                 .MovieMarkers
                 .AsNoTracking()
-                .Where(m => m.User == user)
-                .Where(m => m.Type == MovieMarkerType.Viewed)
+                .Where(m => m.User == user && m.Type == MovieMarkerType.Viewed)
+                .Include(m => m.Movie)
                 .ToListAsync();
             
             return View(favorites);
@@ -132,8 +132,8 @@ namespace CinematiQ.Controllers
             var favorites = await _context
                 .MovieMarkers
                 .AsNoTracking()
-                .Where(m => m.User == user)
-                .Where(m => m.Type == MovieMarkerType.Postponed)
+                .Where(m => m.User == user && m.Type == MovieMarkerType.Postponed)
+                .Include(m => m.Movie)
                 .ToListAsync();
             
             return View(favorites);
@@ -150,8 +150,8 @@ namespace CinematiQ.Controllers
             var favorites = await _context
                 .MovieMarkers
                 .AsNoTracking()
-                .Where(m => m.User == user)
-                .Where(m => m.Type == MovieMarkerType.Abandoned)
+                .Where(m => m.User == user && m.Type == MovieMarkerType.Abandoned)
+                .Include(m => m.Movie)
                 .ToListAsync();
             
             return View(favorites);

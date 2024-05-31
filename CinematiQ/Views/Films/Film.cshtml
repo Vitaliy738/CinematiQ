@@ -1,7 +1,7 @@
 ﻿@using System.Text
 @using CinematiQ.Models.Entities
 @using Microsoft.EntityFrameworkCore
-@model Movie
+@model FilmPageVM
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 
 
 @{
-    if (Model.MovieType == MovieType.Movie)
+    if (Model.Movie.MovieType == MovieType.Movie)
     {
         <style>
                 body {
@@ -29,7 +29,7 @@
                 }
             </style>
     }
-    else if (Model.MovieType == MovieType.Serial)
+    else if (Model.Movie.MovieType == MovieType.Serial)
     {
         <style>
                 body {
@@ -46,7 +46,7 @@
                 }
             </style>
     }
-    else if (Model.MovieType == MovieType.Cartoon)
+    else if (Model.Movie.MovieType == MovieType.Cartoon)
     {
         <style>
                 body {
@@ -63,7 +63,7 @@
                 }
             </style>
     }
-    else if (Model.MovieType == MovieType.Anime)
+    else if (Model.Movie.MovieType == MovieType.Anime)
     {
         <style>
                 body {
@@ -83,16 +83,16 @@
 }
 
 
-<input id="movieId" type="hidden" value="@Model.Id"/>
+<input id="movieId" type="hidden" value="@Model.Movie.Id"/>
 <div class="movie-container">
     <div class="movie-header">
-        <img src="@Model.Poster" alt="@Model.Title" class="movie-poster">
+        <img src="@Model.Movie.Poster" alt="@Model.Movie.Title" class="movie-poster">
         <div class="movie-info">
-            <h1>@Model.Title</h1>
-            <h2>@Model.AlterTitle</h2>
+            <h1>@Model.Movie.Title</h1>
+            <h2>@Model.Movie.AlterTitle</h2>
             <p>
                 @{
-                    foreach (var genre in Model.Genres)
+                    foreach (var genre in Model.Movie.Genres)
                     {
                         <span class="genre">@genre.Title</span>
                     }
@@ -103,20 +103,20 @@
                 <span>10 із 10</span>
                 
                 <p><strong>Рік:</strong></p>
-                <span>@Model.YearOfRelease</span>
+                <span>@Model.Movie.YearOfRelease</span>
                 
                 <p><strong>Статус:</strong></p>
-                <span>@Model.MovieStatus</span>
+                <span>@Model.Movie.MovieStatus</span>
                 
                 <p><strong>Тип:</strong></p>
-                <span>@Model.MovieType</span>
+                <span>@Model.Movie.MovieType</span>
                 
                 <p><strong>Студія:</strong></p>
-                <span>@Model.Studio</span>
+                <span>@Model.Movie.Studio</span>
                 
                 <p><strong>Країна:</strong></p>
                 @{
-                    foreach (var country in Model.Countries)
+                    foreach (var country in Model.Movie.Countries)
                     {
                         <span>@country.Name</span>
                     }
@@ -127,24 +127,24 @@
     </div>
     <div class="bookmark my-3">
         <select id="bookmark-select">
-            <option>Не дивлюсь</option>
-            <option>Дивлюсь</option>
-            <option>В планах</option>
-            <option>Переглянуто</option>
-            <option>Відкладено</option>
-            <option>Кинуто</option>
-            <option>Улюблені</option>
+            <option value="-1" selected="@Model.IsSelected(-1)">Не дивлюсь</option>
+            <option value="2" selected="@Model.IsSelected(2)">Дивлюсь</option>
+            <option value="1" selected="@Model.IsSelected(1)">В планах</option>
+            <option value="3" selected="@Model.IsSelected(3)">Переглянуто</option>
+            <option value="4" selected="@Model.IsSelected(4)">Відкладено</option>
+            <option value="5" selected="@Model.IsSelected(5)">Кинуто</option>
+            <option value="0" selected="@Model.IsSelected(0)">Улюблені</option>
         </select>
     </div>
     <div class="movie-description">
-        <h2>ОПИС СЮЖЕТУ «@Model.Title»</h2>
-        <p>@Model.Description</p>
+        <h2>ОПИС СЮЖЕТУ «@Model.Movie.Title»</h2>
+        <p>@Model.Movie.Description</p>
     </div>
     <div class="outer-container">
         <div class="rating-container">
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.PlotReviews.Any() ? Model.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
-                    <span>@(Model.PlotReviews.Any() ? Model.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                <div class="circle-rating" data-rating="@(Model.Movie.PlotReviews.Any() ? Model.Movie.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.Movie.PlotReviews.Any() ? Model.Movie.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
                 </div>
                 <div class="rating-details">
                     <p>Сюжет</p>
@@ -158,8 +158,8 @@
                 </div>
             </div>
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.CharacterReviews.Any() ? Model.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
-                    <span>@(Model.CharacterReviews.Any() ? Model.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                <div class="circle-rating" data-rating="@(Model.Movie.CharacterReviews.Any() ? Model.Movie.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.Movie.CharacterReviews.Any() ? Model.Movie.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
                 </div>
                 <div class="rating-details">
                     <p>Персонажі</p>
@@ -173,8 +173,8 @@
                 </div>
             </div>
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.PictureQualityReviews.Any() ? Model.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
-                    <span>@(Model.PictureQualityReviews.Any() ? Model.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                <div class="circle-rating" data-rating="@(Model.Movie.PictureQualityReviews.Any() ? Model.Movie.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.Movie.PictureQualityReviews.Any() ? Model.Movie.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
                 </div>
                 <div class="rating-details">
                     <p>Картинка</p>
@@ -188,8 +188,8 @@
                 </div>
             </div>
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.PersonalImpressionsReviews.Any() ? Model.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
-                    <span>@(Model.PersonalImpressionsReviews.Any() ? Model.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                <div class="circle-rating" data-rating="@(Model.Movie.PersonalImpressionsReviews.Any() ? Model.Movie.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    <span>@(Model.Movie.PersonalImpressionsReviews.Any() ? Model.Movie.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
                 </div>
                 <div class="rating-details">
                     <p>Власні враження</p>
@@ -208,13 +208,13 @@
     
     <div class="movie-player">
         @{
-            if (Model.Seasons.Any())
+            if (Model.Movie.Seasons.Any())
             {
                 <div class="season-select">
                     <select id="season-select">
                         @{
                             int seasonCount = 1;
-                            foreach (var season in Model.Seasons)
+                            foreach (var season in Model.Movie.Seasons)
                             {
                                 <option value="@season.Id">@{ ++seasonCount; }</option>
                             }
@@ -287,7 +287,7 @@
         
         <div class="comments">
             @{
-                foreach (var comment in Model.Comments)
+                foreach (var comment in Model.Movie.Comments)
                 {
                     <div class="comment">
                         <img src="/images/icon_profile.png" alt="Avatar" class="avatar">
@@ -303,4 +303,4 @@
 </div>
 
 <script src="~/js/signalr.js"></script>
-<script src="~/js/comments.js"></script>
+<script src="~/js/film.js"></script>

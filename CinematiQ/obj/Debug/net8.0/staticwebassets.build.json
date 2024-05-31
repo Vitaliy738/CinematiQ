@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SOFqbULCKFrGeMpWAizaoZ9fJx7dlpD36YtH1+8+WNo=",
+  "Hash": "r1aWap1vkkLbbAKYt4QnSKo2gBedts+KIeezezQ5T8A=",
   "Source": "CinematiQ",
   "BasePath": "_content/CinematiQ",
   "Mode": "Default",
@@ -1860,12 +1860,12 @@
       "OriginalItemSpec": "wwwroot\\js\\Chart.js"
     },
     {
-      "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\comments.js",
+      "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\film.js",
       "SourceId": "CinematiQ",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\",
       "BasePath": "_content/CinematiQ",
-      "RelativePath": "js/comments.js",
+      "RelativePath": "js/film.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1876,7 +1876,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\comments.js"
+      "OriginalItemSpec": "wwwroot\\js\\film.js"
     },
     {
       "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\filterMovies.js",
@@ -1896,6 +1896,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\filterMovies.js"
+    },
+    {
+      "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\moviemarks.js",
+      "SourceId": "CinematiQ",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\",
+      "BasePath": "_content/CinematiQ",
+      "RelativePath": "js/moviemarks.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\moviemarks.js"
     },
     {
       "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\rating.js",

@@ -1,6 +1,6 @@
 var connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Information)
-    .withUrl("/hub/comments", signalR.HttpTransportType.WebSocket)
+    .withUrl("/hub/film", signalR.HttpTransportType.WebSocket)
     .build();
 
 connection.on("ReceivePostComment", function (userName, date, content) {
@@ -66,8 +66,25 @@ document.getElementById("sendComment").addEventListener("click", function (event
     event.preventDefault();
 })
 
+document.getElementById("bookmark-select").addEventListener("change", function (event) {
+    let movieId = document.getElementById('movieId').value;
+    let selectedValue = document.getElementById('bookmark-select').value;
+    let selectedValueInt = parseInt(selectedValue, 10);
+
+    if (selectedValueInt === -1) {
+        connection.send("RemoveBookmark", movieId).catch(function (err){
+            return console.error(err.toString());
+        })
+    }
+    else {
+        connection.send("SetBookmark", movieId, selectedValueInt).catch(function (err){
+            return console.error(err.toString());
+        })
+    }
+});
+
 function fulfilled() {
-    console.log("Connection to Comment hub successful");
+
 }
 
 function rejected() {
