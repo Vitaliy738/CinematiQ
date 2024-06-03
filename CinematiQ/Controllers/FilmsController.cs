@@ -148,13 +148,13 @@ public class FilmsController : Controller
     public async Task<IActionResult> Film(string id)
     {
         FilmPageVM pageVm = new FilmPageVM();
-        
+
         var movie = await _context.Movies
             .Include(m => m.Countries)
             .Include(m => m.Genres)
             .Include(m => m.Seasons)
             .FirstOrDefaultAsync(m => m.Id == id);
-        
+
         if (movie == null || movie.Id != id)
         {
             return NotFound();
@@ -168,35 +168,46 @@ public class FilmsController : Controller
 
         pageVm.Movie = movie;
 
-        if (!User.Identity.IsAuthenticated)
+        if (!User.Identity?.IsAuthenticated ?? true)
         {
             return View(pageVm);
         }
-        
+
         var user = await _userManager.GetUserAsync(User);
         if (user == null)
         {
             return NotFound();
         }
-            
-        user.LastWatchedMovies.Add(new LastWatchedMovie
-        {
-            Movie = movie,
-            Date = DateTime.Now
-        });
 
-        _context.Update(user);
+        var lastWatchedMovie = await _context.LastWatchedMovies.FirstOrDefaultAsync(
+            lvm => lvm.User == user && lvm.Movie == movie);
+
+        DateTime now = DateTime.Now;
+
+        if (lastWatchedMovie == null) // if not found
+        {
+            await _context.LastWatchedMovies.AddAsync(new LastWatchedMovie
+            {
+                Movie = movie,
+                User = user,
+                Date = now,
+            });
+        }
+        else
+        {
+            lastWatchedMovie.Date = now;
+        }
+
         await _context.SaveChangesAsync();
-            
-            
+
         var moviemarkType =
             await _context.MovieMarkers.FirstOrDefaultAsync(m => m.Movie == movie && m.User == user);
-        
+
         if (moviemarkType != null)
         {
             pageVm.SelectedMoviemarker = (int)moviemarkType.Type;
         }
-        
+
         return View(pageVm);
     }
 
