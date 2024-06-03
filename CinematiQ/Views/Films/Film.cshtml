@@ -125,16 +125,24 @@
             
         </div>
     </div>
-    <div class="bookmark my-3">
-        <select id="bookmark-select">
-            <option value="-1" selected="@Model.IsSelected(-1)">Не дивлюсь</option>
-            <option value="2" selected="@Model.IsSelected(2)">Дивлюсь</option>
-            <option value="1" selected="@Model.IsSelected(1)">В планах</option>
-            <option value="3" selected="@Model.IsSelected(3)">Переглянуто</option>
-            <option value="4" selected="@Model.IsSelected(4)">Відкладено</option>
-            <option value="5" selected="@Model.IsSelected(5)">Кинуто</option>
-            <option value="0" selected="@Model.IsSelected(0)">Улюблені</option>
-        </select>
+    <div>
+        <div class="col">
+            <div class="bookmark my-3">
+                <select id="bookmark-select">
+                    <option value="-1" selected="@Model.IsSelected(-1)">Не дивлюсь</option>
+                    <option value="2" selected="@Model.IsSelected(2)">Дивлюсь</option>
+                    <option value="1" selected="@Model.IsSelected(1)">В планах</option>
+                    <option value="3" selected="@Model.IsSelected(3)">Переглянуто</option>
+                    <option value="4" selected="@Model.IsSelected(4)">Відкладено</option>
+                    <option value="5" selected="@Model.IsSelected(5)">Кинуто</option>
+                    <option value="0" selected="@Model.IsSelected(0)">Улюблені</option>
+                </select>
+            </div>
+            
+            <div class="bookmark my-3">
+                <a class="button" asp-controller="Movie" asp-action="Edit" asp-route-id="@Model.Movie.Id">Редагувати</a>
+            </div>
+        </div>
     </div>
     <div class="movie-description">
         <h2>ОПИС СЮЖЕТУ «@Model.Movie.Title»</h2>
@@ -143,17 +151,21 @@
     <div class="outer-container">
         <div class="rating-container">
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.Movie.PlotReviews.Any() ? Model.Movie.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                <div class="circle-rating"
+                     id="circle-rating"
+                     data-rating="@(Model.Movie.PlotReviews.Any() ? Model.Movie.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                    
                     <span>@(Model.Movie.PlotReviews.Any() ? Model.Movie.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
+                    
                 </div>
                 <div class="rating-details">
                     <p>Сюжет</p>
-                    <div class="star-rating" id="star-rating">
-                        <span data-value="1"></span>
-                        <span data-value="2"></span>
-                        <span data-value="3"></span>
-                        <span data-value="4"></span>
+                    <div class="star-rating" id="plot-rating">
                         <span data-value="5"></span>
+                        <span data-value="4"></span>
+                        <span data-value="3"></span>
+                        <span data-value="2"></span>
+                        <span data-value="1"></span>
                     </div>
                 </div>
             </div>
@@ -163,12 +175,12 @@
                 </div>
                 <div class="rating-details">
                     <p>Персонажі</p>
-                    <div class="star-rating">
-                        <span data-value="1"></span>
-                        <span data-value="2"></span>
-                        <span data-value="3"></span>
-                        <span data-value="4"></span>
+                    <div class="star-rating" id="character-rating">
                         <span data-value="5"></span>
+                        <span data-value="4"></span>
+                        <span data-value="3"></span>
+                        <span data-value="2"></span>
+                        <span data-value="1"></span>
                     </div>
                 </div>
             </div>
@@ -178,12 +190,12 @@
                 </div>
                 <div class="rating-details">
                     <p>Картинка</p>
-                    <div class="star-rating">
-                        <span data-value="1"></span>
-                        <span data-value="2"></span>
-                        <span data-value="3"></span>
-                        <span data-value="4"></span>
+                    <div class="star-rating" id="picture-rating">
                         <span data-value="5"></span>
+                        <span data-value="4"></span>
+                        <span data-value="3"></span>
+                        <span data-value="2"></span>
+                        <span data-value="1"></span>
                     </div>
                 </div>
             </div>
@@ -193,12 +205,12 @@
                 </div>
                 <div class="rating-details">
                     <p>Власні враження</p>
-                    <div class="star-rating">
-                        <span data-value="1"></span>
-                        <span data-value="2"></span>
-                        <span data-value="3"></span>
-                        <span data-value="4"></span>
+                    <div class="star-rating" id="personal-rating">
                         <span data-value="5"></span>
+                        <span data-value="4"></span>
+                        <span data-value="3"></span>
+                        <span data-value="2"></span>
+                        <span data-value="1"></span>
                     </div>
                 </div>
             </div>
@@ -292,7 +304,10 @@
                     <div class="comment">
                         <img src="/images/icon_profile.png" alt="Avatar" class="avatar">
                         <div class="comment-text">
-                            <p><strong>@comment.User.UserName</strong>@comment.Date.ToString("dd/MM/yyyy")</p>
+                            <p>
+                                <strong class="me-2">@comment.User.UserName</strong>
+                                @comment.Date.ToString("dd/MM/yyyy")
+                            </p>
                             <p>@comment.Content</p>
                         </div>
                     </div>

@@ -199,4 +199,25 @@ public class FilmsController : Controller
         
         return View(pageVm);
     }
+
+    public async Task<IActionResult> Search(string query, int pageNumber = 1, int pageSize = 18)
+    {
+        if (string.IsNullOrEmpty(query))
+        {
+            return NotFound();
+        }
+
+        var movies = await _context.Movies
+            .Where(m => m.Title.Contains(query) ||
+                        m.Description.Contains(query))
+            .ToPagedListAsync(pageNumber, pageSize);
+
+        if (!movies.Any())
+        {
+            return NotFound();
+        }
+        
+        return View(movies);
+    }
+
 }

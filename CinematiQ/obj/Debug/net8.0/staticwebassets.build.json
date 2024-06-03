@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "r1aWap1vkkLbbAKYt4QnSKo2gBedts+KIeezezQ5T8A=",
+  "Hash": "OEoeQc3LQ38OK2eMVuWEcA/2nBANYFwSnuUuPOR7bkc=",
   "Source": "CinematiQ",
   "BasePath": "_content/CinematiQ",
   "Mode": "Default",
@@ -1917,12 +1917,12 @@
       "OriginalItemSpec": "wwwroot\\js\\moviemarks.js"
     },
     {
-      "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\rating.js",
+      "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\navbar.js",
       "SourceId": "CinematiQ",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\",
       "BasePath": "_content/CinematiQ",
-      "RelativePath": "js/rating.js",
+      "RelativePath": "js/navbar.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1933,7 +1933,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\rating.js"
+      "OriginalItemSpec": "wwwroot\\js\\navbar.js"
     },
     {
       "Identity": "C:\\Users\\Asus\\source\\repos\\CinematiQ\\CinematiQ\\wwwroot\\js\\signalr.js",

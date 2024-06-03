@@ -3,8 +3,31 @@ var connection = new signalR.HubConnectionBuilder()
     .withUrl("/hub/film", signalR.HttpTransportType.WebSocket)
     .build();
 
-connection.on("ReceivePostComment", function (userName, date, content) {
-    addComment(userName, date, content);
+connection.on("ReceivePostComment", function (userName, date, content, movieId) {
+    let pageMovieId = document.getElementById('movieId').value;
+    if (pageMovieId === movieId) {
+        addComment(userName, date, content);
+    }
+});
+
+connection.on("ReceiveSetPlotRating", function (newPlotRating, movieId) {
+    let pageMovieId = document.getElementById('movieId').value;
+
+    if (pageMovieId === movieId) {
+        // Знаходимо елемент з класом circle-rating
+        let circleRatingElement = document.getElementById('circle-rating');
+
+        if (circleRatingElement) {
+            // Оновлюємо значення атрибута data-rating
+            circleRatingElement.setAttribute('data-rating', newPlotRating.toFixed(1));
+
+            // Оновлюємо текст всередині <span>
+            let spanElement = circleRatingElement.querySelector('span');
+            if (spanElement) {
+                spanElement.textContent = newPlotRating.toFixed(1);
+            }
+        }
+    }
 });
 
 function addComment(userName, date, content) {
@@ -81,6 +104,25 @@ document.getElementById("bookmark-select").addEventListener("change", function (
             return console.error(err.toString());
         })
     }
+});
+
+// plot-rating
+document.addEventListener("DOMContentLoaded", function() {
+    let stars = document.querySelectorAll("#plot-rating span");
+    let movieId = document.getElementById('movieId').value;
+
+    stars.forEach(function(star) {
+        star.addEventListener("click", function() {
+            let ratingValue = this.getAttribute("data-value");
+            let ratingValueInt = parseInt(ratingValue, 10);
+            
+            console.log(ratingValue);
+
+            connection.send("SetPlotRating", movieId, ratingValueInt).catch(function (err){
+                return console.error(err.toString());
+            })
+        });
+    });
 });
 
 function fulfilled() {

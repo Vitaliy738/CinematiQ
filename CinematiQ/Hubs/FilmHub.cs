@@ -49,7 +49,7 @@ public class FilmHub : Hub
 
         await _context.SaveChangesAsync();
 
-        await Clients.All.SendAsync("ReceivePostComment", comment.User.UserName, comment.Date, comment.Content);
+        await Clients.All.SendAsync("ReceivePostComment", comment.User.UserName, comment.Date, comment.Content, comment.MovieId);
     }
 
     public async Task DeleteComment(string commentId)
@@ -121,5 +121,49 @@ public class FilmHub : Hub
         
         await _context.SaveChangesAsync();
         await Clients.All.SendAsync("ReceiveRemoveBookmark");
+    }
+
+    public async Task SetPlotRating(string movieId, int value)
+    {
+        if (value > 5 || value < 1)
+        {
+            return;
+        }
+        
+        var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _context.ApplicationIdentityUser
+            .Include(u => u.PlotReviews)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+
+        if (user == null)
+        {
+            return;
+        }
+
+        var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
+        if (movie == null)
+        {
+            return;
+        }
+
+        var plotReview = await _context.PlotReviews.FirstOrDefaultAsync(p => p.User == user && p.Movie == movie);
+        if (plotReview == null)
+        {
+            user.PlotReviews.Add(new PlotReview
+            {
+                Grade = value,
+                Movie = movie
+            });
+        }
+        else
+        {
+            plotReview.Grade = value;
+        }
+        
+        await _context.SaveChangesAsync();
+
+        var newPlotRating = await _context.PlotReviews.AverageAsync(p => p.Grade);
+        
+        await Clients.All.SendAsync("ReceiveSetPlotRating", newPlotRating, plotReview.MovieId);
     }
 }

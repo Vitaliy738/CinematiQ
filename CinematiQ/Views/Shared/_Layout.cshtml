@@ -15,12 +15,12 @@
         <header class="header fx-row fx-middle">
             <div class="logo">CINEMATIQ</div>
             <div class="search-bar ">
-                <input type="text" placeholder="Пошук...">
-                <button type="button">
+                <input id="searchBar" type="text" placeholder="Пошук...">
+                <button id="searchButton" type="submit">
                     <img src="/images/Glass_white.svg" alt="Search Icon">
                 </button>
             </div>
-           
+            
             <div class="d-flex align-items-center">
                 <div class="me-3">
                     <a class="notification position-relative" asp-area="Identity" asp-page="/Account/Login">
@@ -70,6 +70,7 @@
     </div>
 </div>
 
+<script src="~/js/navbar.js"></script>
 <script src="~/js/signalr.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
