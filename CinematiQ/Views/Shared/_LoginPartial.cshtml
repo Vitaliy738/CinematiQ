@@ -1,0 +1,17 @@
+﻿@using CinematiQ.Models.Entities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationIdentityUser> SignInManager
+@inject UserManager<ApplicationIdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <a class="profile" asp-controller="Home" asp-action="Profile">
+        <img src="~/images/Профіль.svg" alt="User Icon">
+    </a>
+}
+else
+{
+    <a class="profile" asp-area="Identity" asp-page="/Account/Login">
+        <img src="~/images/Профіль.svg" alt="User Icon">
+    </a>
+}

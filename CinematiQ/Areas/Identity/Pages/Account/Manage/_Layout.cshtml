@@ -1,0 +1,50 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "Manage/_Layout";
+    }
+}
+<meta charset="utf-8" />
+
+<style>
+    body {
+        background-image: url(/images/background1.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        min-height: 100vh;
+    }
+</style>
+
+<div>
+    <div class="h2">Налаштування вашого акаунта</div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Films" asp-action="Index">Головна</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Profile">Профіль</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Налаштування</li>
+        </ol>
+    </nav>
+    <hr />
+    
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
