@@ -17,231 +17,231 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CinematiQ
 build_property.RootNamespace = CinematiQ
-build_property.ProjectDir = C:\Users\Asus\source\repos\CinematiQ\CinematiQ\
+build_property.ProjectDir = C:\Users\roman\Source\Repos\CinematiQ2\CinematiQ\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Asus\source\repos\CinematiQ\CinematiQ
+build_property.MSBuildProjectDirectory = C:\Users\roman\Source\Repos\CinematiQ2\CinematiQ
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Country/Create.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Country/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Country/Delete.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Country/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Country/Details.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Country/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Country/Edit.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Country/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Country/Index.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Country/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Anime.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Anime.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcQW5pbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Announcements.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Announcements.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcQW5ub3VuY2VtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Cartoons.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Cartoons.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcQ2FydG9vbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Film.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Film.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcRmlsbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Index.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Movies.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Movies.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcTW92aWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Releases.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Releases.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcUmVsZWFzZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Search.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcU2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Films/Series.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Films/Series.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbXNcU2VyaWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Genre/Create.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Genre/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Genre/Delete.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Genre/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Genre/Details.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Genre/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Genre/Edit.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Genre/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Genre/Index.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Genre/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Abandoned.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Abandoned.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYmFuZG9uZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Favorite.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Favorite.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGYXZvcml0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Index.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/NotFound.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/NotFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3RGb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Planned.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Planned.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQbGFubmVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Postponed.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Postponed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQb3N0cG9uZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Privacy.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Profile.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Viewed.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Viewed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3ZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Home/Watching.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Home/Watching.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxXYXRjaGluZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Movie/Create.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Movie/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Movie/Delete.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Movie/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Movie/Details.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Movie/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Movie/Edit.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Movie/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Movie/Index.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Movie/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Shared/Error.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Shared/_BookmarksLayout.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Shared/_BookmarksLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Cb29rbWFya3NMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Shared/_BookmarksNav.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Shared/_BookmarksNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Cb29rbWFya3NOYXYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/_ViewImports.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/_ViewStart.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Asus/source/repos/CinematiQ/CinematiQ/Views/Shared/_Layout.cshtml]
+[C:/Users/roman/Source/Repos/CinematiQ2/CinematiQ/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6ps4271rrg
