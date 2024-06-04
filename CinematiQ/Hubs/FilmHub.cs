@@ -154,11 +154,14 @@ public class FilmHub : Hub
         var plotReview = await _context.PlotReviews.FirstOrDefaultAsync(p => p.User == user && p.Movie == movie);
         if (plotReview == null)
         {
-            user.PlotReviews.Add(new PlotReview
+            plotReview = new PlotReview
             {
-                Grade = value,
-                Movie = movie
-            });
+                User = user,
+                Movie = movie,
+                Grade = value
+            };
+            
+            user.PlotReviews.Add(plotReview);
         }
         else
         {
@@ -170,5 +173,143 @@ public class FilmHub : Hub
         var newPlotRating = await _context.PlotReviews.AverageAsync(p => p.Grade);
         
         await Clients.All.SendAsync("ReceiveSetPlotRating", newPlotRating, plotReview.MovieId);
+    }
+    public async Task SetCharacterRating(string movieId, int value)
+    {
+        if (value > 5 || value < 1)
+        {
+            return;
+        }
+        
+        var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _context.ApplicationIdentityUser
+            .Include(u => u.PlotReviews)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+
+        if (user == null)
+        {
+            return;
+        }
+
+        var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
+        if (movie == null)
+        {
+            return;
+        }
+
+        var characterReview = await _context.CharacterReviews.FirstOrDefaultAsync(p => p.User == user && p.Movie == movie);
+        if (characterReview == null)
+        {
+            characterReview = new CharacterReview()
+            {
+                User = user,
+                Movie = movie,
+                Grade = value
+            };
+            
+            user.CharacterReviews.Add(characterReview);
+        }
+        else
+        {
+            characterReview.Grade = value;
+        }
+        
+        await _context.SaveChangesAsync();
+
+        var newCharacterRating = await _context.CharacterReviews.AverageAsync(p => p.Grade);
+        
+        await Clients.All.SendAsync("ReceiveSetCharacterRating", newCharacterRating, characterReview.MovieId);
+    }
+    public async Task SetPictureRating(string movieId, int value)
+    {
+        if (value > 5 || value < 1)
+        {
+            return;
+        }
+        
+        var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _context.ApplicationIdentityUser
+            .Include(u => u.PlotReviews)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+
+        if (user == null)
+        {
+            return;
+        }
+
+        var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
+        if (movie == null)
+        {
+            return;
+        }
+
+        var pictureReview = await _context.PictureQualityReviews.FirstOrDefaultAsync(p => p.User == user && p.Movie == movie);
+        if (pictureReview == null)
+        {
+            pictureReview = new PictureQualityReview()
+            {
+                User = user,
+                Movie = movie,
+                Grade = value
+            };
+            
+            user.PictureQualityReviews.Add(pictureReview);
+        }
+        else
+        {
+            pictureReview.Grade = value;
+        }
+        
+        await _context.SaveChangesAsync();
+
+        var newPictureRating = await _context.PictureQualityReviews.AverageAsync(p => p.Grade);
+        
+        await Clients.All.SendAsync("ReceiveSetPictureRating", newPictureRating, pictureReview.MovieId);
+    }
+    public async Task SetPersonalRating(string movieId, int value)
+    {
+        if (value > 5 || value < 1)
+        {
+            return;
+        }
+        
+        var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _context.ApplicationIdentityUser
+            .Include(u => u.PlotReviews)
+            .FirstOrDefaultAsync(u => u.Id == userId);
+
+        if (user == null)
+        {
+            return;
+        }
+
+        var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == movieId);
+        if (movie == null)
+        {
+            return;
+        }
+
+        var personalReview = await _context.PersonalImpressionsReviews.FirstOrDefaultAsync(p => p.User == user && p.Movie == movie);
+        if (personalReview == null)
+        {
+            personalReview = new PersonalImpressionsReview()
+            {
+                User = user,
+                Movie = movie,
+                Grade = value
+            };
+            
+            user.PersonalImpressionsReviews.Add(personalReview);
+        }
+        else
+        {
+            personalReview.Grade = value;
+        }
+        
+        await _context.SaveChangesAsync();
+
+        var newPersonalRating = await _context.PersonalImpressionsReviews.AverageAsync(p => p.Grade);
+        
+        await Clients.All.SendAsync("ReceiveSetPersonalRating", newPersonalRating, personalReview.MovieId);
     }
 }

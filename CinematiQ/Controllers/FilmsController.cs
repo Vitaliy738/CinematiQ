@@ -153,6 +153,10 @@ public class FilmsController : Controller
             .Include(m => m.Countries)
             .Include(m => m.Genres)
             .Include(m => m.Seasons)
+            .Include(m => m.PlotReviews)
+            .Include(m => m.CharacterReviews)
+            .Include(m => m.PictureQualityReviews)
+            .Include(m => m.PersonalImpressionsReviews)
             .FirstOrDefaultAsync(m => m.Id == id);
 
         if (movie == null || movie.Id != id)

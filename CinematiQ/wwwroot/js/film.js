@@ -14,17 +14,62 @@ connection.on("ReceiveSetPlotRating", function (newPlotRating, movieId) {
     let pageMovieId = document.getElementById('movieId').value;
 
     if (pageMovieId === movieId) {
-        // Знаходимо елемент з класом circle-rating
-        let circleRatingElement = document.getElementById('circle-rating');
+        let circleRatingElement = document.getElementById('plot-circle-rating');
 
         if (circleRatingElement) {
-            // Оновлюємо значення атрибута data-rating
             circleRatingElement.setAttribute('data-rating', newPlotRating.toFixed(1));
 
-            // Оновлюємо текст всередині <span>
             let spanElement = circleRatingElement.querySelector('span');
             if (spanElement) {
                 spanElement.textContent = newPlotRating.toFixed(1);
+            }
+        }
+    }
+});
+connection.on("ReceiveSetCharacterRating", function (newCharacterRating, movieId) {
+    let pageMovieId = document.getElementById('movieId').value;
+
+    if (pageMovieId === movieId) {
+        let circleRatingElement = document.getElementById('character-circle-rating');
+
+        if (circleRatingElement) {
+            circleRatingElement.setAttribute('data-rating', newCharacterRating.toFixed(1));
+
+            let spanElement = circleRatingElement.querySelector('span');
+            if (spanElement) {
+                spanElement.textContent = newCharacterRating.toFixed(1);
+            }
+        }
+    }
+});
+connection.on("ReceiveSetPictureRating", function (newPictureRating, movieId) {
+    let pageMovieId = document.getElementById('movieId').value;
+
+    if (pageMovieId === movieId) {
+        let circleRatingElement = document.getElementById('picture-circle-rating');
+
+        if (circleRatingElement) {
+            circleRatingElement.setAttribute('data-rating', newPictureRating.toFixed(1));
+
+            let spanElement = circleRatingElement.querySelector('span');
+            if (spanElement) {
+                spanElement.textContent = newPictureRating.toFixed(1);
+            }
+        }
+    }
+});
+connection.on("ReceiveSetPersonalRating", function (newPersonalRating, movieId) {
+    let pageMovieId = document.getElementById('movieId').value;
+
+    if (pageMovieId === movieId) {
+        let circleRatingElement = document.getElementById('personal-circle-rating');
+
+        if (circleRatingElement) {
+            circleRatingElement.setAttribute('data-rating', newPersonalRating.toFixed(1));
+
+            let spanElement = circleRatingElement.querySelector('span');
+            if (spanElement) {
+                spanElement.textContent = newPersonalRating.toFixed(1);
             }
         }
     }
@@ -119,6 +164,63 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(ratingValue);
 
             connection.send("SetPlotRating", movieId, ratingValueInt).catch(function (err){
+                return console.error(err.toString());
+            })
+        });
+    });
+});
+
+// character-rating
+document.addEventListener("DOMContentLoaded", function() {
+    let stars = document.querySelectorAll("#character-rating span");
+    let movieId = document.getElementById('movieId').value;
+
+    stars.forEach(function(star) {
+        star.addEventListener("click", function() {
+            let ratingValue = this.getAttribute("data-value");
+            let ratingValueInt = parseInt(ratingValue, 10);
+            
+            console.log(ratingValue);
+
+            connection.send("SetCharacterRating", movieId, ratingValueInt).catch(function (err){
+                return console.error(err.toString());
+            })
+        });
+    });
+});
+
+// picture-rating
+document.addEventListener("DOMContentLoaded", function() {
+    let stars = document.querySelectorAll("#picture-rating span");
+    let movieId = document.getElementById('movieId').value;
+
+    stars.forEach(function(star) {
+        star.addEventListener("click", function() {
+            let ratingValue = this.getAttribute("data-value");
+            let ratingValueInt = parseInt(ratingValue, 10);
+            
+            console.log(ratingValue);
+
+            connection.send("SetPictureRating", movieId, ratingValueInt).catch(function (err){
+                return console.error(err.toString());
+            })
+        });
+    });
+});
+
+// personal-rating
+document.addEventListener("DOMContentLoaded", function() {
+    let stars = document.querySelectorAll("#personal-rating span");
+    let movieId = document.getElementById('movieId').value;
+
+    stars.forEach(function(star) {
+        star.addEventListener("click", function() {
+            let ratingValue = this.getAttribute("data-value");
+            let ratingValueInt = parseInt(ratingValue, 10);
+            
+            console.log(ratingValue);
+
+            connection.send("SetPersonalRating", movieId, ratingValueInt).catch(function (err){
                 return console.error(err.toString());
             })
         });

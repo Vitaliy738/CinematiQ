@@ -152,7 +152,7 @@
         <div class="rating-container">
             <div class="rating-item">
                 <div class="circle-rating"
-                     id="circle-rating"
+                     id="plot-circle-rating"
                      data-rating="@(Model.Movie.PlotReviews.Any() ? Model.Movie.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
                     
                     <span>@(Model.Movie.PlotReviews.Any() ? Model.Movie.PlotReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
@@ -170,7 +170,10 @@
                 </div>
             </div>
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.Movie.CharacterReviews.Any() ? Model.Movie.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                <div class="circle-rating"
+                     data-rating="@(Model.Movie.CharacterReviews.Any() ? Model.Movie.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")"
+                     id="character-circle-rating">
+                    
                     <span>@(Model.Movie.CharacterReviews.Any() ? Model.Movie.CharacterReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
                 </div>
                 <div class="rating-details">
@@ -185,7 +188,10 @@
                 </div>
             </div>
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.Movie.PictureQualityReviews.Any() ? Model.Movie.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                <div class="circle-rating"
+                     data-rating="@(Model.Movie.PictureQualityReviews.Any() ? Model.Movie.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")"
+                     id="picture-circle-rating">
+                    
                     <span>@(Model.Movie.PictureQualityReviews.Any() ? Model.Movie.PictureQualityReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
                 </div>
                 <div class="rating-details">
@@ -200,7 +206,10 @@
                 </div>
             </div>
             <div class="rating-item">
-                <div class="circle-rating" data-rating="@(Model.Movie.PersonalImpressionsReviews.Any() ? Model.Movie.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")">
+                <div class="circle-rating"
+                     data-rating="@(Model.Movie.PersonalImpressionsReviews.Any() ? Model.Movie.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")"
+                     id="personal-circle-rating">
+                    
                     <span>@(Model.Movie.PersonalImpressionsReviews.Any() ? Model.Movie.PersonalImpressionsReviews.Average(p => p.Grade).ToString("0.0") : "0.0")</span>
                 </div>
                 <div class="rating-details">
