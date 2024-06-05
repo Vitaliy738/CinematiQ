@@ -170,7 +170,7 @@ public class FilmHub : Hub
         
         await _context.SaveChangesAsync();
 
-        var newPlotRating = await _context.PlotReviews.AverageAsync(p => p.Grade);
+        var newPlotRating = await _context.PlotReviews.Where(pr => pr.Movie == movie).AverageAsync(p => p.Grade);
         
         await Clients.All.SendAsync("ReceiveSetPlotRating", newPlotRating, plotReview.MovieId);
     }
@@ -216,7 +216,7 @@ public class FilmHub : Hub
         
         await _context.SaveChangesAsync();
 
-        var newCharacterRating = await _context.CharacterReviews.AverageAsync(p => p.Grade);
+        var newCharacterRating = await _context.CharacterReviews.Where(cr => cr.Movie == movie).AverageAsync(p => p.Grade);
         
         await Clients.All.SendAsync("ReceiveSetCharacterRating", newCharacterRating, characterReview.MovieId);
     }
@@ -262,7 +262,7 @@ public class FilmHub : Hub
         
         await _context.SaveChangesAsync();
 
-        var newPictureRating = await _context.PictureQualityReviews.AverageAsync(p => p.Grade);
+        var newPictureRating = await _context.PictureQualityReviews.Where(pr => pr.Movie == movie).AverageAsync(p => p.Grade);
         
         await Clients.All.SendAsync("ReceiveSetPictureRating", newPictureRating, pictureReview.MovieId);
     }
@@ -308,7 +308,7 @@ public class FilmHub : Hub
         
         await _context.SaveChangesAsync();
 
-        var newPersonalRating = await _context.PersonalImpressionsReviews.AverageAsync(p => p.Grade);
+        var newPersonalRating = await _context.PersonalImpressionsReviews.Where(pi => pi.Movie == movie).AverageAsync(p => p.Grade);
         
         await Clients.All.SendAsync("ReceiveSetPersonalRating", newPersonalRating, personalReview.MovieId);
     }
