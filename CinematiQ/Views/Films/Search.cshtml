@@ -1,4 +1,4 @@
-@model X.PagedList.IPagedList<CinematiQ.Models.Entities.Movie>
+@model CinematiQ.Models.ViewModels.SearchVM
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +21,9 @@
 <div class="sect">
     <div class="sect-content" id="dle-content">
         @{
-            if (Model.Any())
+            if (Model.Movies.Any())
             {
-                foreach (var movie in Model)
+                foreach (var movie in Model.Movies)
                 {
                     <div class="short-item width-16">
                         <div class="short-cols fx-row">
@@ -40,28 +40,40 @@
 </div>
 
 <div class="pagination">
-    @if (Model.PageCount > 1)
+    @if (Model.Movies.PageCount > 1)
     {
-        if (Model.HasPreviousPage)
+        if (Model.Movies.HasPreviousPage)
         {
-            <a class="pagination-arrow" asp-action="Movies" asp-route-pageSize="@Model.PageSize" asp-route-pageNumber="@(Model.PageNumber - 1)"></a>
+            <a class="pagination-arrow" 
+               asp-action="Search" 
+               asp-route-query="@Model.SearchQuery" 
+               asp-route-pageSize="@Model.Movies.PageSize" 
+               asp-route-pageNumber="@(Model.Movies.PageNumber - 1)">&gt;</a>
         }
         
-        @for (int i = 1; i <= Model.PageCount; i++)
+        @for (int i = 1; i <= Model.Movies.PageCount; i++)
         {
-            if (i == 1 || i == Model.PageCount || (Math.Abs(Model.PageNumber - i) <= 2))
+            if (i == 1 || i == Model.Movies.PageCount || (Math.Abs(Model.Movies.PageNumber - i) <= 2))
             {
-                <a class="page-number @(i == Model.PageNumber ? "page-number-active" : "")" asp-action="Movies" asp-route-pageSize="@Model.PageSize" asp-route-pageNumber="@i">@i</a>
+                <a class="page-number @(i == Model.Movies.PageNumber ? "page-number-active" : "")" 
+                   asp-action="Search" 
+                   asp-route-query="@Model.SearchQuery" 
+                   asp-route-pageSize="@Model.Movies.PageSize" 
+                   asp-route-pageNumber="@i">@i</a>
             }
-            else if (Math.Abs(Model.PageNumber - i) == 3)
+            else if (Math.Abs(Model.Movies.PageNumber - i) == 3)
             {
                 <span class="page-number disabled">...</span>
             }
         }
 
-        if (Model.HasNextPage)
+        if (Model.Movies.HasNextPage)
         {
-            <a class="pagination-arrow" asp-action="Movies" asp-route-pageSize="@Model.PageSize" asp-route-pageNumber="@(Model.PageNumber + 1)">&gt;</a>
+            <a class="pagination-arrow" 
+               asp-action="Search" 
+               asp-route-query="@Model.SearchQuery" 
+               asp-route-pageSize="@Model.Movies.PageSize" 
+               asp-route-pageNumber="@(Model.Movies.PageNumber + 1)">&gt;</a>
         }
     }
 </div>

@@ -222,17 +222,21 @@ public class FilmsController : Controller
             return NotFound();
         }
 
-        var movies = await _context.Movies
+        var searchVm = new SearchVM();
+
+        searchVm.Movies = await _context.Movies
             .Where(m => m.Title.Contains(query) ||
                         m.Description.Contains(query))
             .ToPagedListAsync(pageNumber, pageSize);
 
-        if (!movies.Any())
+        if (!searchVm.Movies.Any())
         {
             return NotFound();
         }
+
+        searchVm.SearchQuery = query;
         
-        return View(movies);
+        return View(searchVm);
     }
 
 }

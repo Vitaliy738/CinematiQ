@@ -88,7 +88,8 @@ public class FilmHub : Hub
             user.MovieMarkers.Add(new MovieMarker
             {
                 Movie = movie,
-                Type = moviemarkType
+                Type = moviemarkType,
+                AddedDate = DateTime.Now
             });
         }
         else

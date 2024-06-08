@@ -94,33 +94,28 @@
                 @{
                     foreach (var genre in Model.Movie.Genres)
                     {
-                        <span class="genre">@genre.Title</span>
+                        <span class="genre"
+                              data-bs-toggle="tooltip" data-bs-placement="top"
+                              data-bs-custom-class="custom-tooltip"
+                              data-bs-title="@genre.Description">@genre.Title</span>
                     }
                 }
             </p>
             <div class="info-grid">
-                <p><strong>Вийшла серія:</strong> </p>
-                <span>10 із 10</span>
-                
                 <p><strong>Рік:</strong></p>
                 <span>@Model.Movie.YearOfRelease</span>
-                
+
                 <p><strong>Статус:</strong></p>
                 <span>@Model.Movie.MovieStatus</span>
-                
+
                 <p><strong>Тип:</strong></p>
                 <span>@Model.Movie.MovieType</span>
-                
+
                 <p><strong>Студія:</strong></p>
                 <span>@Model.Movie.Studio</span>
-                
+
                 <p><strong>Країна:</strong></p>
-                @{
-                    foreach (var country in Model.Movie.Countries)
-                    {
-                        <span>@country.Name</span>
-                    }
-                }
+                <span>@string.Join(", ", @Model.Movie.Genres.Select(g => g.Title))</span>
             </div>
             
         </div>
@@ -225,7 +220,6 @@
             </div>
         </div>
     </div>
-
     
     <div class="movie-player">
         @{

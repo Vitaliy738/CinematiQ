@@ -137,6 +137,18 @@ body {
   color: #E50914;
 }
 
+.logo a {
+  font-size: 40px;
+  font-weight: bold;
+  color: #E50914;
+}
+
+.logo a:hover {
+  font-size: 40px;
+  font-weight: bold;
+  color: #bc0209;
+}
+
 .search-bar {
   display: flex;
   align-items: center;

@@ -21,6 +21,11 @@ namespace CinematiQ.Models.Entities
         public MovieMarkerType Type { get; set; }
         
         [Required]
+        [Display(Name = "Дата додавання")]
+        [DataType(DataType.Date)]
+        public DateTime AddedDate { get; set; }
+        
+        [Required]
         [Display(Name = "ID фільму")]
         public string MovieId { get; set; }
         

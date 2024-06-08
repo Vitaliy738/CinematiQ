@@ -48,7 +48,6 @@ namespace CinematiQ.Controllers
             return View(user);
         }
 
-        
         public async Task<IActionResult> Favorite()
         {
             var user = await _userManager.GetUserAsync(User);

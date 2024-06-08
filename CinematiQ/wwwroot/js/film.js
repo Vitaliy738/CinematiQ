@@ -111,26 +111,11 @@ document.getElementById("sendComment").addEventListener("click", function (event
     let movieId = document.getElementById('movieId').value;
     let commentText = document.getElementById('commentArea').value;
 
-    if (!movieId || !commentText) {
-        let alertDiv = document.createElement('div');
-        alertDiv.className = 'alert alert-danger';
-        alertDiv.role = 'alert';
-        alertDiv.innerText = 'A simple danger alert—check it out!';
-
-        document.body.appendChild(alertDiv);
-
-        setTimeout(() => {
-            alertDiv.remove();
-        }, 3000);
-
-        return;
-    }
-    else {
+    if (movieId && commentText) {
         connection.send("PostComment", movieId, commentText).catch(function (err){
             return console.error(err.toString());
         })
     }
-
     event.preventDefault();
 })
 
@@ -161,8 +146,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let ratingValue = this.getAttribute("data-value");
             let ratingValueInt = parseInt(ratingValue, 10);
             
-            console.log(ratingValue);
-
             connection.send("SetPlotRating", movieId, ratingValueInt).catch(function (err){
                 return console.error(err.toString());
             })
@@ -180,8 +163,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let ratingValue = this.getAttribute("data-value");
             let ratingValueInt = parseInt(ratingValue, 10);
             
-            console.log(ratingValue);
-
             connection.send("SetCharacterRating", movieId, ratingValueInt).catch(function (err){
                 return console.error(err.toString());
             })
@@ -199,8 +180,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let ratingValue = this.getAttribute("data-value");
             let ratingValueInt = parseInt(ratingValue, 10);
             
-            console.log(ratingValue);
-
             connection.send("SetPictureRating", movieId, ratingValueInt).catch(function (err){
                 return console.error(err.toString());
             })
@@ -218,8 +197,6 @@ document.addEventListener("DOMContentLoaded", function() {
             let ratingValue = this.getAttribute("data-value");
             let ratingValueInt = parseInt(ratingValue, 10);
             
-            console.log(ratingValue);
-
             connection.send("SetPersonalRating", movieId, ratingValueInt).catch(function (err){
                 return console.error(err.toString());
             })
