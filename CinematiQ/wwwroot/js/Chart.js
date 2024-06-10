@@ -1,36 +1,44 @@
-var data = {
-    labels: ['Дивлюсь', 'В планах', 'Переглянуто', 'Відкладено', 'Кинуто'],
-    datasets: [{
-        data: [2, 5, 3, 2, 1], 
-        backgroundColor: [
-            '#639C67',
-            '#9E67A0',
-            '#5C68A2',
-            '#D0902E',
-            '#B0443F'
-        ]
-    }]
-};
+document.addEventListener('DOMContentLoaded', function () {
+    var watchingCountElement = document.getElementById('watchingCount');
+    var plannedCountElement = document.getElementById('plannedCount');
+    var viewedCountElement = document.getElementById('viewedCount');
+    var postponedCountElement = document.getElementById('postponedCount');
+    var abandonedCountElement = document.getElementById('abandonedCount');
+    var favoriteCountElement = document.getElementById('favoriteCount');
 
-var options = {
-    responsive: true,
-    legend: {
-        position: 'bottom'
-    },
-    title: {
-        display: true,
-        text: 'Статистика просмотров'
-    },
-    animation: {
-        animateScale: true,
-        animateRotate: true
-    }
-};
-
-// круговой диаграма
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: data,
-    options: options
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Дивлюсь', 'В планах', 'Переглянуто', 'Відкладено', 'Кинуто', 'Улюблені'],
+            datasets: [{
+                data: [
+                    parseInt(watchingCountElement.textContent),
+                    parseInt(plannedCountElement.textContent),
+                    parseInt(viewedCountElement.textContent),
+                    parseInt(postponedCountElement.textContent),
+                    parseInt(abandonedCountElement.textContent),
+                    parseInt(favoriteCountElement.textContent)
+                ],
+                backgroundColor: [
+                    '#639C67',
+                    '#9E67A0',
+                    '#5C68A2',
+                    '#D0902E',
+                    '#B0443F'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                tooltip: {
+                    enabled: false 
+                },
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
 });

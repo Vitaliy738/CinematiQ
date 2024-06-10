@@ -661,3 +661,56 @@ a.section-title:hover {
   background-color: #0098A7;
   color: #FFFFFF;
 }
+
+
+
+
+
+
+
+.notification-container {
+    position: relative;
+    display: inline-block;
+}
+
+
+.notifications {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #132933;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+    .notifications h3 {
+        margin: 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .notifications ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .notifications li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+        .notifications li:last-child {
+            border-bottom: none;
+        }
+
+        .notifications li:hover {
+            background-color: #2E859E;
+            cursor: pointer;
+        }

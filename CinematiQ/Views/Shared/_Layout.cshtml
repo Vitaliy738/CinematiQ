@@ -20,20 +20,30 @@
                     <img src="/images/Glass_white.svg" alt="Search Icon">
                 </button>
             </div>
-            
-            <div class="d-flex align-items-center">
-                <div class="me-3">
-                    <a class="notification position-relative" asp-area="Identity" asp-page="/Account/Login">
-                        <img src="~/images/колокол.svg" alt="Notification Icon">
-                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
-                            <span class="visually-hidden">unread messages</span>
-                        </span>
-                    </a>
+
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <div class="notification-container">
+                            <a class="notification position-relative" onclick="toggleNotifications(event)">
+                                <img src="~/images/колокол.svg" alt="Notification Icon">
+                                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </a>
+                            <div class="notifications" id="notifications">
+                                <h3>Повідомлення</h3>
+                                <ul id="notificationList">
+                                    <li>Додали коментар до серіалу</li>
+                                    <li>Видалили коментр з фільму</li>
+                                    <li>Додали аніме до закладки улюблені</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
-                <div>
-                    <partial name="_LoginPartial"/>
-                </div>
-            </div>
         </header>
         <div class="carou-sect">
             <ul class="menunav_top">

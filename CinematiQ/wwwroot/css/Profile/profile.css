@@ -72,12 +72,13 @@
     padding: 20px;
     margin: 10px;
     width: 600px;
-    height: max-content;
+/*    height: max-content;*/
 }
 
 .stats-details {
     display: flex;
     justify-content: space-between;
+    margin-top: 25px;
 }
 
 .stats-info {
@@ -118,12 +119,20 @@
 .dropped {
     background-color: #B0443F;
 }
-
-
-
+.favorite {
+    background-color: #d63384;
+}
 .chart {
     width: 200px;
     height: 200px;
+    margin: 10px;
+}
+
+.stats-chart {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    margin-right: 100px;
 }
 
 .recent-views {
