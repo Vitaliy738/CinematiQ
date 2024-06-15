@@ -372,12 +372,20 @@ a.section-title:hover {
   transition: .3s;
 }
 .short-img {
-  height: 245px;
-  width: 100%;
-  margin-bottom: 10px;
-  display: block;
-  border-radius: 10px;
+    height: 245px;
+    width: 100%;
+    margin-bottom: 10px;
+    display: block;
+    border-radius: 10px;
 }
+
+    .short-img img {
+        transition: filter 0.3s ease;
+    }
+
+        .short-img img:hover {
+            filter: saturate(180%);
+        }
 
 .short-btn, .short-img {
   box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
@@ -714,3 +722,4 @@ a.section-title:hover {
             background-color: #2E859E;
             cursor: pointer;
         }
+
