@@ -21,35 +21,33 @@
                 </button>
             </div>
 
-                <div class="d-flex align-items-center">
-                    <div class="me-3">
-                        <div class="notification-container">
-                            <a class="notification position-relative" onclick="toggleNotifications(event)">
-                                <img src="~/images/колокол.svg" alt="Notification Icon">
-                                <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
-                                    <span class="visually-hidden">unread messages</span>
-                                </span>
-                            </a>
-                            <div class="notifications" id="notifications">
-                                <h3>Повідомлення</h3>
-                                <ul id="notificationList">
-                                    <li>Додали коментар до серіалу</li>
-                                    <li>Видалили коментр з фільму</li>
-                                    <li>Додали аніме до закладки улюблені</li>
-                                </ul>
-                            </div>
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <div class="notification-container">
+                        <a class="notification position-relative" onclick="toggleNotifications(event)">
+                            <img src="~/images/колокол.svg" alt="Notification Icon">
+                            <span id="NewNotification" class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        </a>
+                        <div class="notifications" id="notifications">
+                            <h3>Повідомлення</h3>
+                            <ul id="notificationList">
+                            </ul>
                         </div>
                     </div>
-                    <div>
-                        <partial name="_LoginPartial" />
-                    </div>
                 </div>
+                <div>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
         </header>
         <div class="carou-sect">
             <ul class="menunav_top">
                 <div class="left-nav">
                     <li><a class="link" asp-controller="Films" asp-action="Releases">Новинки</a></li>
                     <li><a class="link" asp-controller="Films" asp-action="Announcements">Анонси</a></li>
+                    <li><a class="link" asp-controller="Movie" asp-action="Create">Анонси</a></li>
                 </div>
                 <div class="center-nav">
                     <li><a class="link" asp-controller="Films" asp-action="Movies">Фільми</a></li>
@@ -62,15 +60,21 @@
                 </div>
             </ul>
         </div>
-        <div class="carou-sect">
-            <ul class="menunav_top">
-                <div class="left-nav">
-                    <li><a class="link" asp-controller="Movie" asp-action="Index">Фільми</a></li>
-                    <li><a class="link" asp-controller="Country" asp-action="Index">Країни</a></li>
-                    <li><a class="link" asp-controller="Genre" asp-action="Index">Жанри</a></li>
+        @{
+            if (User.IsInRole("Admin"))
+            {
+                <div class="carou-sect">
+                    <ul class="menunav_top">
+                        <div class="left-nav">
+                            <li><a class="link" asp-controller="Movie" asp-action="Index">Фільми</a></li>
+                            <li><a class="link" asp-controller="Country" asp-action="Index">Країни</a></li>
+                            <li><a class="link" asp-controller="Genre" asp-action="Index">Жанри</a></li>
+                        </div>
+                    </ul>
                 </div>
-            </ul>
-        </div>
+            }
+        }
+        
         <div class="cols fx-row">
             <main role="main" class="fx-1">
                 @RenderBody()
@@ -84,6 +88,9 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/notification.js"></script>
+
 @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

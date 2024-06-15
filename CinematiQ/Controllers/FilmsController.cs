@@ -1,10 +1,12 @@
 using CinematiQ.Data;
+using CinematiQ.Hubs;
 using CinematiQ.Models;
 using CinematiQ.Models.Entities;
 using CinematiQ.Models.ViewModels;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 
@@ -15,13 +17,14 @@ public class FilmsController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly UserManager<ApplicationIdentityUser> _userManager;
     private readonly ApplicationDbContext _context;
+    private readonly IHubContext<NotificationHub> _notificationHub;
 
-
-    public FilmsController(ILogger<HomeController> logger, UserManager<ApplicationIdentityUser> userManager, ApplicationDbContext context)
+    public FilmsController(ILogger<HomeController> logger, UserManager<ApplicationIdentityUser> userManager, ApplicationDbContext context, IHubContext<NotificationHub> notificationHub)
     {
         _logger = logger;
         _userManager = userManager;
         _context = context;
+        _notificationHub = notificationHub;
     }
     
     public async Task<IActionResult> Index()
@@ -211,7 +214,7 @@ public class FilmsController : Controller
         {
             pageVm.SelectedMoviemarker = (int)moviemarkType.Type;
         }
-
+        
         return View(pageVm);
     }
 

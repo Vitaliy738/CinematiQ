@@ -25,6 +25,7 @@ namespace CinematiQ.Data
         public DbSet<PictureQualityReview> PictureQualityReviews { get; set; }
         public DbSet<PlotReview> PlotReviews { get; set; }
         public DbSet<Season> Seasons { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -38,6 +39,7 @@ namespace CinematiQ.Data
             builder.ApplyConfiguration(new PictureQualityReviewConfiguration());
             builder.ApplyConfiguration(new PlotReviewConfiguration());
             builder.ApplyConfiguration(new SeasonConfiguration());
+            builder.ApplyConfiguration(new NotificationConfiguration());
             
             base.OnModelCreating(builder);
         }

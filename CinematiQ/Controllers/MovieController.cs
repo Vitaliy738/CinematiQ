@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinematiQ.Data;
 using CinematiQ.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using X.PagedList;
 
 namespace CinematiQ.Controllers
 {
+    [Authorize]
     public class MovieController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -28,12 +30,14 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Movie
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 15)
         {
             return View(await _context.Movies.AsNoTracking().ToPagedListAsync(pageNumber, pageSize));
         }
 
         // GET: Movie/Details/5
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -52,6 +56,7 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Movie/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewBag.MovieTypeList = GetMovieTypeSelectList();
@@ -82,10 +87,9 @@ namespace CinematiQ.Controllers
         }
 
         // POST: Movie/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Title,AlterTitle,Poster,Thumbnail,Description,ShortDescription,YearOfRelease,Studio,MovieType,MovieStatus,Trailer")] Movie movie, string[] genres, string[] countries)
         {
             if (ModelState.IsValid)
@@ -105,6 +109,7 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Movie/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -131,6 +136,7 @@ namespace CinematiQ.Controllers
         // POST: Movie/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Title,AlterTitle,Poster,Thumbnail,Description,ShortDescription,YearOfRelease,Studio,MovieType,MovieStatus,Trailer")] Movie movie, string[] genres, string[] countries)
         {
             if (id != movie.Id)
@@ -204,6 +210,7 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Movie/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -224,6 +231,7 @@ namespace CinematiQ.Controllers
         // POST: Movie/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var movie = await _context.Movies.FindAsync(id);

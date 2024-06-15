@@ -1,21 +1,23 @@
 using System.Security.Claims;
 using CinematiQ.Data;
+using CinematiQ.Models.DTO;
 using CinematiQ.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
 
 namespace CinematiQ.Hubs;
 
 public class FilmHub : Hub
 {
     private readonly ApplicationDbContext _context;
-    private readonly UserManager<ApplicationIdentityUser> _userManager;
+    private readonly IHubContext<NotificationHub> _notificationHub;
 
-    public FilmHub(ApplicationDbContext context, UserManager<ApplicationIdentityUser> userManager)
+    public FilmHub(ApplicationDbContext context, IHubContext<NotificationHub> notificationHub)
     {
         _context = context;
-        _userManager = userManager;
+        _notificationHub = notificationHub;
     }
 
     public async Task PostComment(string movieId, string content)
@@ -27,6 +29,7 @@ public class FilmHub : Hub
 
         if (user == null)
         {
+            await Clients.Caller.SendAsync("CommentUserIsNotAuthorize");
             return;
         }
 
@@ -49,19 +52,65 @@ public class FilmHub : Hub
 
         await _context.SaveChangesAsync();
 
-        await Clients.All.SendAsync("ReceivePostComment", comment.User.UserName, comment.Date, comment.Content, comment.MovieId);
+        await Clients.All.SendAsync("ReceivePostComment", comment.User.Name, comment.Date, comment.Content, comment.MovieId);
     }
 
     public async Task DeleteComment(string commentId)
     {
-        var comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == commentId);
-
-        if (comment != null)
-            _context.Remove(comment);
-
-        await _context.SaveChangesAsync();
-    }
+        if (Context.User.IsInRole("Admin") || Context.User.IsInRole("Moderator"))
+        {
+            var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _context.ApplicationIdentityUser
+                .Include(u => u.MovieMarkers)
+                .FirstOrDefaultAsync(u => u.Id == userId);
     
+            if (user == null || string.IsNullOrEmpty(userId))
+            {
+                return;
+            }
+            
+            var comment = await _context.Comments
+                .Include(c => c.Movie)
+                .Include(c => c.User)
+                .FirstOrDefaultAsync(c => c.Id == commentId);
+    
+            if (comment == null)
+            {
+                return;
+            }
+            
+            _context.Remove(comment);
+            
+            await Clients.All.SendAsync("ReceiveDeleteComment", comment.Id);
+
+            var notification = new Notification
+            {
+                Header = "Ваш коментар було видалено",
+                Content = $"Ваш коментар до '{comment.Movie.Title}' було видалено модератором. {DateTime.Now:dd/MM/yyyy HH:mm}",
+                Receiver = comment.User,
+                Sender = user,
+                Date = DateTime.Now,
+                IsRead = false
+            };
+
+            await _context.Notifications.AddAsync(notification);
+
+            var notificationDTO = new NotificationDTO
+            {
+                Id = notification.Id,
+                Content = notification.Content,
+                Date = notification.Date,
+                Header = notification.Header,
+                IsRead = notification.IsRead,
+                SenderUserName = notification.Sender.UserName
+            };
+            
+            await _notificationHub.Clients.User(comment.UserId).SendAsync("ReceiveSendNotification", notificationDTO);
+
+            await _context.SaveChangesAsync();
+        }
+    }
+
     public async Task SetBookmark(string movieId, int moviemarkNumber)
     {
         var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -71,6 +120,7 @@ public class FilmHub : Hub
 
         if (user == null)
         {
+            await Clients.Caller.SendAsync("MoviemarkerUserIsNotAuthorize");
             return;
         }
 
@@ -110,6 +160,7 @@ public class FilmHub : Hub
 
         if (user == null)
         {
+            await Clients.Caller.SendAsync("MoviemarkerUserIsNotAuthorize");
             return;
         }
 
@@ -143,6 +194,7 @@ public class FilmHub : Hub
 
         if (user == null)
         {
+            await Clients.Caller.SendAsync("RatingUserIsNotAuthorize");
             return;
         }
 
@@ -189,6 +241,7 @@ public class FilmHub : Hub
 
         if (user == null)
         {
+            await Clients.Caller.SendAsync("RatingUserIsNotAuthorize");
             return;
         }
 
@@ -235,6 +288,7 @@ public class FilmHub : Hub
 
         if (user == null)
         {
+            await Clients.Caller.SendAsync("RatingUserIsNotAuthorize");
             return;
         }
 
@@ -281,6 +335,7 @@ public class FilmHub : Hub
 
         if (user == null)
         {
+            await Clients.Caller.SendAsync("RatingUserIsNotAuthorize");
             return;
         }
 

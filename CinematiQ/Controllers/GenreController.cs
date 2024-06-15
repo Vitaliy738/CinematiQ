@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinematiQ.Data;
 using CinematiQ.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using X.PagedList;
 
 namespace CinematiQ.Controllers
 {
+    [Authorize]
     public class GenreController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,12 +23,14 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Genre
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 15)
         {
             return View(await _context.Genres.AsNoTracking().ToPagedListAsync(pageNumber, pageSize));
         }
 
         // GET: Genre/Details/5
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -45,6 +49,7 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Genre/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -55,6 +60,7 @@ namespace CinematiQ.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Title,Description")] Genre genre)
         {
             if (ModelState.IsValid)
@@ -67,6 +73,7 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Genre/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -87,6 +94,7 @@ namespace CinematiQ.Controllers
         // POST: Genre/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Title,Description")] Genre genre)
         {
             if (id != genre.Id)
@@ -118,6 +126,7 @@ namespace CinematiQ.Controllers
         }
 
         // GET: Genre/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -138,6 +147,7 @@ namespace CinematiQ.Controllers
         // POST: Genre/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var genre = await _context.Genres.FindAsync(id);

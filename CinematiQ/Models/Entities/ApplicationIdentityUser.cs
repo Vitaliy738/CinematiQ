@@ -7,22 +7,20 @@ namespace CinematiQ.Models.Entities
     {
         public string Name { get; set; }
         public string Location { get; set; }
-        public List<MovieMarker> MovieMarkers { get; set; } = new();
-        public List<LastWatchedMovie> LastWatchedMovies { get; set; } = new();
-        public List<Comment> Comments { get; set; } = new();
+        public List<MovieMarker> MovieMarkers { get; set; } = [];
+        public List<LastWatchedMovie> LastWatchedMovies { get; set; } = [];
+        public List<Comment> Comments { get; set; } = [];
         
-        [Display(Name = "Оцінки сюжету")]
-        public List<PlotReview> PlotReviews { get; set; } = new();
+        public List<PlotReview> PlotReviews { get; set; } = [];
         
-        [Display(Name = "Оцінки якості картинки")]
-        public List<PictureQualityReview> PictureQualityReviews { get; set; } = new();
+        public List<PictureQualityReview> PictureQualityReviews { get; set; } = [];
         
-        [Display(Name = "Оцінки персонажів")]
-        public List<CharacterReview> CharacterReviews { get; set; } = new();
+        public List<CharacterReview> CharacterReviews { get; set; } = [];
         
-        [Display(Name = "Оцінки власних вражень")]
-        public List<PersonalImpressionsReview> PersonalImpressionsReviews { get; set; } = new();
+        public List<PersonalImpressionsReview> PersonalImpressionsReviews { get; set; } = [];
         
         public string Icon { get; set; }
+
+        public List<Notification> Notifications { get; set; } = [];
     }
 }

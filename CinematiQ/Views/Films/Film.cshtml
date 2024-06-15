@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="~/css/Page/page.css" asp-append-version="true" />
-<script src="/js/rating.js"></script>
 <title>Сторінка фільму</title>
 
 
@@ -134,9 +133,16 @@
                 </select>
             </div>
             
-            <div class="bookmark my-3">
-                <a class="button" asp-controller="Movie" asp-action="Edit" asp-route-id="@Model.Movie.Id">Редагувати</a>
-            </div>
+            @{
+                if (User.IsInRole("Admin"))
+                {
+                    <div class="bookmark my-3">
+                        <a class="button" asp-controller="Movie" asp-action="Edit" asp-route-id="@Model.Movie.Id">Редагувати</a>
+                    </div>
+                }
+            }
+
+            <div id="alertMoviemarkerBlock"></div>
         </div>
     </div>
     <div class="movie-description">
@@ -219,6 +225,8 @@
                 </div>
             </div>
         </div>
+
+        <div id="alertRatingBlock"></div>
     </div>
     
     <div class="movie-player">
@@ -300,16 +308,24 @@
             <button id="sendComment">Відправити</button>
         </div>
         
+        <div id="alertCommentBlock"></div>
+
         <div class="comments">
             @{
                 foreach (var comment in Model.Movie.Comments)
                 {
-                    <div class="comment">
+                    <div id="@comment.Id" class="comment">
                         <img src="/images/icon_profile.png" alt="Avatar" class="avatar">
                         <div class="comment-text">
                             <p>
-                                <strong class="me-2">@comment.User.UserName</strong>
+                                <strong class="me-2">@(comment.User?.Name)</strong>
                                 @comment.Date.ToString("dd/MM/yyyy")
+                                @{
+                                    if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+                                    {
+                                        <button class="link btn-delete-comment" data-comment-id="@comment.Id">Delete</button>
+                                    }
+                                }
                             </p>
                             <p>@comment.Content</p>
                         </div>

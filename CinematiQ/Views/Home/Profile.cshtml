@@ -26,7 +26,7 @@
     <div class="profile-info">
         <img src="/images/icon_profile.png" alt="User Photo" class="profile-photo">
         <div class="profile-details">
-            <h3>@Model.UserName</h3>
+            <h3>@Model.Name</h3>
             <p>Електронна пошта:</p>
             <div class="profile-data">@Model.Email</div>
             @{
@@ -67,12 +67,9 @@
                 <a class="bookmarks-statistic" asp-controller="Home" asp-action="Abandoned">
                     <div class="stat-item"><span class="stat-square dropped"></span>Кинуто: <span id="abandonedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Abandoned)</span></div>
                 </a>
-                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Favorites">
-                    <div class="stat-item"><span class="stat-square favorite"></span>Улюбленні: <span id="favoriteCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Favorite)</span></div>
-                </a>
             </div>
             <div class="stats-chart">
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <canvas id="myChart"></canvas>
             </div>
         </div>
     </div>

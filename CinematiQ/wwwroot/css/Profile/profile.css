@@ -130,10 +130,17 @@
 
 .stats-chart {
     display: flex;
-    width: 200px;
-    height: 200px;
+    justify-content: center;
+    align-items: center;
     margin-right: 100px;
+    max-width: 200px;
 }
+
+canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
 
 .recent-views {
     background-color: #132933;

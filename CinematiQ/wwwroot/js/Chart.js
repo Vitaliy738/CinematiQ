@@ -4,13 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var viewedCountElement = document.getElementById('viewedCount');
     var postponedCountElement = document.getElementById('postponedCount');
     var abandonedCountElement = document.getElementById('abandonedCount');
-    var favoriteCountElement = document.getElementById('favoriteCount');
 
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Дивлюсь', 'В планах', 'Переглянуто', 'Відкладено', 'Кинуто', 'Улюблені'],
+            labels: ['Дивлюсь', 'В планах', 'Переглянуто', 'Відкладено', 'Кинуто'],
             datasets: [{
                 data: [
                     parseInt(watchingCountElement.textContent),
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     parseInt(viewedCountElement.textContent),
                     parseInt(postponedCountElement.textContent),
                     parseInt(abandonedCountElement.textContent),
-                    parseInt(favoriteCountElement.textContent)
                 ],
                 backgroundColor: [
                     '#639C67',
@@ -37,7 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 legend: {
                     display: false
-                }
+                },
+                responsive: true
             }
         }
     });

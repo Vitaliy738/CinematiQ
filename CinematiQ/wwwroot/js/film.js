@@ -1,77 +1,104 @@
-var connection = new signalR.HubConnectionBuilder()
+var filmConnection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Information)
-    .withUrl("/hub/film", signalR.HttpTransportType.WebSocket)
+    .withUrl("/hub/film")
     .build();
 
-connection.on("ReceivePostComment", function (userName, date, content, movieId) {
+async function startFilmConnection() {
+    try {
+        await filmConnection.start();
+    } catch (err) {
+        console.error("Error connecting to FilmHub: ", err);
+        setTimeout(startFilmConnection, 5000);
+    }
+}
+
+filmConnection.on("CommentUserIsNotAuthorize", function () {
+    var alertPlaceholder = document.getElementById("alertCommentBlock");
+    alertPlaceholder.innerHTML = '';
+
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = [
+        `<div class="alert alert-primary alert-dismissible fade show" role="alert">`,
+        `   <div>Для того, щоб залишити коментар, вам потрібно бути <a href="/Identity/Account/Login" class="alert-link">авторизованим</a>.
+                Якщо ви ще не маєте свого аккаунту - <a href="/Identity/Account/Register" class="alert-link">створіть його</a>.</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+    ].join('');
+
+    alertPlaceholder.append(wrapper);
+});
+
+filmConnection.on("RatingUserIsNotAuthorize", function () {
+    var alertPlaceholder = document.getElementById("alertRatingBlock");
+    alertPlaceholder.innerHTML = '';
+
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = [
+        `<div class="alert alert-primary alert-dismissible fade show" role="alert">`,
+        `   <div>Для того, щоб залишити оцінку до фільму, вам потрібно бути <a href="/Identity/Account/Login" class="alert-link">авторизованим</a>.
+                Якщо ви ще не маєте свого аккаунту - <a href="/Identity/Account/Register" class="alert-link">створіть його</a>.</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+    ].join('');
+
+    alertPlaceholder.append(wrapper);
+});
+
+filmConnection.on("MoviemarkerUserIsNotAuthorize", function () {
+    var alertPlaceholder = document.getElementById("alertMoviemarkerBlock");
+    alertPlaceholder.innerHTML = '';
+
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = [
+        `<div class="alert alert-primary alert-dismissible fade show" role="alert">`,
+        `   <div>Для того, щоб додати фільм до своїх списків, вам потрібно бути <a href="/Identity/Account/Login" class="alert-link">авторизованим</a>.
+                Якщо ви ще не маєте свого аккаунту - <a href="/Identity/Account/Register" class="alert-link">створіть його</a>.</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+    ].join('');
+
+    alertPlaceholder.append(wrapper);
+});
+
+filmConnection.on("ReceivePostComment", function (userName, date, content, movieId) {
     let pageMovieId = document.getElementById('movieId').value;
     if (pageMovieId === movieId) {
         addComment(userName, date, content);
     }
 });
 
-connection.on("ReceiveSetPlotRating", function (newPlotRating, movieId) {
-    let pageMovieId = document.getElementById('movieId').value;
-
-    if (pageMovieId === movieId) {
-        let circleRatingElement = document.getElementById('plot-circle-rating');
-
-        if (circleRatingElement) {
-            circleRatingElement.setAttribute('data-rating', newPlotRating.toFixed(1));
-
-            let spanElement = circleRatingElement.querySelector('span');
-            if (spanElement) {
-                spanElement.textContent = newPlotRating.toFixed(1);
-            }
-        }
+filmConnection.on("CommentDeleted", function (commentId) {
+    const commentElement = document.getElementById(commentId);
+    if (commentElement) {
+        commentElement.remove();
     }
 });
-connection.on("ReceiveSetCharacterRating", function (newCharacterRating, movieId) {
+
+filmConnection.on("ReceiveSetPlotRating", function (newPlotRating, movieId) {
     let pageMovieId = document.getElementById('movieId').value;
-
     if (pageMovieId === movieId) {
-        let circleRatingElement = document.getElementById('character-circle-rating');
-
-        if (circleRatingElement) {
-            circleRatingElement.setAttribute('data-rating', newCharacterRating.toFixed(1));
-
-            let spanElement = circleRatingElement.querySelector('span');
-            if (spanElement) {
-                spanElement.textContent = newCharacterRating.toFixed(1);
-            }
-        }
+        updateRating('plot-circle-rating', newPlotRating);
     }
 });
-connection.on("ReceiveSetPictureRating", function (newPictureRating, movieId) {
+
+filmConnection.on("ReceiveSetCharacterRating", function (newCharacterRating, movieId) {
     let pageMovieId = document.getElementById('movieId').value;
-
     if (pageMovieId === movieId) {
-        let circleRatingElement = document.getElementById('picture-circle-rating');
-
-        if (circleRatingElement) {
-            circleRatingElement.setAttribute('data-rating', newPictureRating.toFixed(1));
-
-            let spanElement = circleRatingElement.querySelector('span');
-            if (spanElement) {
-                spanElement.textContent = newPictureRating.toFixed(1);
-            }
-        }
+        updateRating('character-circle-rating', newCharacterRating);
     }
 });
-connection.on("ReceiveSetPersonalRating", function (newPersonalRating, movieId) {
+
+filmConnection.on("ReceiveSetPictureRating", function (newPictureRating, movieId) {
     let pageMovieId = document.getElementById('movieId').value;
-
     if (pageMovieId === movieId) {
-        let circleRatingElement = document.getElementById('personal-circle-rating');
+        updateRating('picture-circle-rating', newPictureRating);
+    }
+});
 
-        if (circleRatingElement) {
-            circleRatingElement.setAttribute('data-rating', newPersonalRating.toFixed(1));
-
-            let spanElement = circleRatingElement.querySelector('span');
-            if (spanElement) {
-                spanElement.textContent = newPersonalRating.toFixed(1);
-            }
-        }
+filmConnection.on("ReceiveSetPersonalRating", function (newPersonalRating, movieId) {
+    let pageMovieId = document.getElementById('movieId').value;
+    if (pageMovieId === movieId) {
+        updateRating('personal-circle-rating', newPersonalRating);
     }
 });
 
@@ -99,11 +126,17 @@ function addComment(userName, date, content) {
     commentDiv.appendChild(commentTextDiv);
 
     const commentsSection = document.querySelector('.comments');
+    commentsSection.insertBefore(commentDiv, commentsSection.firstChild);
+}
 
-    if (commentsSection.firstChild) {
-        commentsSection.insertBefore(commentDiv, commentsSection.firstChild);
-    } else {
-        commentsSection.appendChild(commentDiv);
+function updateRating(elementId, newRating) {
+    let circleRatingElement = document.getElementById(elementId);
+    if (circleRatingElement) {
+        circleRatingElement.setAttribute('data-rating', newRating.toFixed(1));
+        let spanElement = circleRatingElement.querySelector('span');
+        if (spanElement) {
+            spanElement.textContent = newRating.toFixed(1);
+        }
     }
 }
 
@@ -112,12 +145,14 @@ document.getElementById("sendComment").addEventListener("click", function (event
     let commentText = document.getElementById('commentArea').value;
 
     if (movieId && commentText) {
-        connection.send("PostComment", movieId, commentText).catch(function (err){
-            return console.error(err.toString());
-        })
+        filmConnection.send("PostComment", movieId, commentText).catch(function (err){
+            console.error(err.toString());
+        });
+
+        commentText.value = "";
     }
     event.preventDefault();
-})
+});
 
 document.getElementById("bookmark-select").addEventListener("change", function (event) {
     let movieId = document.getElementById('movieId').value;
@@ -125,91 +160,44 @@ document.getElementById("bookmark-select").addEventListener("change", function (
     let selectedValueInt = parseInt(selectedValue, 10);
 
     if (selectedValueInt === -1) {
-        connection.send("RemoveBookmark", movieId).catch(function (err){
-            return console.error(err.toString());
-        })
+        filmConnection.send("RemoveBookmark", movieId).catch(function (err){
+            console.error(err.toString());
+        });
+    } else {
+        filmConnection.send("SetBookmark", movieId, selectedValueInt).catch(function (err){
+            console.error(err.toString());
+        });
     }
-    else {
-        connection.send("SetBookmark", movieId, selectedValueInt).catch(function (err){
-            return console.error(err.toString());
-        })
-    }
 });
 
-// plot-rating
+// Обробка рейтингових подій після завантаження сторінки
 document.addEventListener("DOMContentLoaded", function() {
-    let stars = document.querySelectorAll("#plot-rating span");
-    let movieId = document.getElementById('movieId').value;
+    let ratingTypes = ["plot", "character", "picture", "personal"];
+    ratingTypes.forEach(type => {
+        let stars = document.querySelectorAll(`#${type}-rating span`);
+        let movieId = document.getElementById('movieId').value;
 
-    stars.forEach(function(star) {
-        star.addEventListener("click", function() {
-            let ratingValue = this.getAttribute("data-value");
-            let ratingValueInt = parseInt(ratingValue, 10);
-            
-            connection.send("SetPlotRating", movieId, ratingValueInt).catch(function (err){
-                return console.error(err.toString());
-            })
+        stars.forEach(star => {
+            star.addEventListener("click", function() {
+                let ratingValue = this.getAttribute("data-value");
+                let ratingValueInt = parseInt(ratingValue, 10);
+
+                filmConnection.send(`Set${type.charAt(0).toUpperCase() + type.slice(1)}Rating`, movieId, ratingValueInt)
+                    .catch(function (err){
+                        console.error(err.toString());
+                    });
+            });
+        });
+    });
+
+    document.querySelectorAll('.btn-delete-comment').forEach(button => {
+        button.addEventListener('click', function () {
+            const commentId = this.getAttribute('data-comment-id');
+            filmConnection.invoke('DeleteComment', commentId).then(() => {
+                document.getElementById(commentId).remove();
+            }).catch(err => console.error(err.toString()));
         });
     });
 });
 
-// character-rating
-document.addEventListener("DOMContentLoaded", function() {
-    let stars = document.querySelectorAll("#character-rating span");
-    let movieId = document.getElementById('movieId').value;
-
-    stars.forEach(function(star) {
-        star.addEventListener("click", function() {
-            let ratingValue = this.getAttribute("data-value");
-            let ratingValueInt = parseInt(ratingValue, 10);
-            
-            connection.send("SetCharacterRating", movieId, ratingValueInt).catch(function (err){
-                return console.error(err.toString());
-            })
-        });
-    });
-});
-
-// picture-rating
-document.addEventListener("DOMContentLoaded", function() {
-    let stars = document.querySelectorAll("#picture-rating span");
-    let movieId = document.getElementById('movieId').value;
-
-    stars.forEach(function(star) {
-        star.addEventListener("click", function() {
-            let ratingValue = this.getAttribute("data-value");
-            let ratingValueInt = parseInt(ratingValue, 10);
-            
-            connection.send("SetPictureRating", movieId, ratingValueInt).catch(function (err){
-                return console.error(err.toString());
-            })
-        });
-    });
-});
-
-// personal-rating
-document.addEventListener("DOMContentLoaded", function() {
-    let stars = document.querySelectorAll("#personal-rating span");
-    let movieId = document.getElementById('movieId').value;
-
-    stars.forEach(function(star) {
-        star.addEventListener("click", function() {
-            let ratingValue = this.getAttribute("data-value");
-            let ratingValueInt = parseInt(ratingValue, 10);
-            
-            connection.send("SetPersonalRating", movieId, ratingValueInt).catch(function (err){
-                return console.error(err.toString());
-            })
-        });
-    });
-});
-
-function fulfilled() {
-
-}
-
-function rejected() {
-
-}
-
-connection.start().then(fulfilled, rejected);
+startFilmConnection();

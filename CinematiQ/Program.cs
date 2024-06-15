@@ -48,5 +48,6 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.MapHub<FilmHub>("/hub/film");
+app.MapHub<NotificationHub>("/hub/notification");
 
 app.Run();
