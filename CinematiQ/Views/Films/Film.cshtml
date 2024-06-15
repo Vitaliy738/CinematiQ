@@ -318,7 +318,7 @@
                         <img src="/images/icon_profile.png" alt="Avatar" class="avatar">
                         <div class="comment-text">
                             <p>
-                                <strong class="me-2">@(comment.User?.Name)</strong>
+                                <strong class="me-2"><a asp-controller="Home" asp-action="UserProfile" asp-route-userId="@comment.User?.Id">@comment.User?.Name</a> </strong>
                                 @comment.Date.ToString("dd/MM/yyyy")
                                 @{
                                     if (User.IsInRole("Admin") || User.IsInRole("Moderator"))

@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CinematiQ.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,6 +22,7 @@ namespace CinematiQ.Controllers
             _context = context;
         }
 
+        [Authorize]
         public async Task<IActionResult> Profile()
         {
             var userId = _userManager.GetUserId(User);
@@ -48,6 +48,22 @@ namespace CinematiQ.Controllers
             return View(user);
         }
 
+        public async Task<IActionResult> UserProfile(string userId)
+        {
+            var user = await _context.ApplicationIdentityUser
+                .AsNoTracking()
+                .Include(u => u.MovieMarkers)
+                .FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            
+            return View(user); 
+        }
+        
+        [Authorize]
         public async Task<IActionResult> Favorite()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -66,6 +82,7 @@ namespace CinematiQ.Controllers
             return View(favorites);
         }
         
+        [Authorize]
         public async Task<IActionResult> Watching()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -84,6 +101,7 @@ namespace CinematiQ.Controllers
             return View(favorites);
         }
         
+        [Authorize]
         public async Task<IActionResult> Planned()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -102,6 +120,7 @@ namespace CinematiQ.Controllers
             return View(favorites);
         }
         
+        [Authorize]
         public async Task<IActionResult> Viewed()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -120,6 +139,7 @@ namespace CinematiQ.Controllers
             return View(favorites);
         }
         
+        [Authorize]
         public async Task<IActionResult> Postponed()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -138,6 +158,7 @@ namespace CinematiQ.Controllers
             return View(favorites);
         }
         
+        [Authorize]
         public async Task<IActionResult> Abandoned()
         {
             var user = await _userManager.GetUserAsync(User);

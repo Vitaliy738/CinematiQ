@@ -1,0 +1,57 @@
+@using CinematiQ.Models.Entities
+@model CinematiQ.Models.Entities.ApplicationIdentityUser
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="~/css/Profile/profile.css" asp-append-version="true" />
+
+<script src="~/js/Chart.js"></script>
+
+<title>Profile</title>
+
+<div class="mb-4">
+    <div class="h2">Перегляд профілю @Model.Name</div>
+    @* <nav aria-label="breadcrumb"> *@
+    @*     <ol class="breadcrumb"> *@
+    @*         <li class="breadcrumb-item"><a asp-controller="Films" asp-action="Index">Головна</a></li> *@
+    @*         <li class="breadcrumb-item active" aria-current="page">Профіль</li> *@
+    @*     </ol> *@
+    @* </nav> *@
+    <hr />
+</div>
+
+<div class="profile-container">
+    <div class="profile-info">
+        <img src="/images/icon_profile.png" alt="User Photo" class="profile-photo">
+        <div class="profile-details">
+            <h3>@Model.Name</h3>
+        </div>
+
+    </div>
+    <div class="statistics">
+        <h3>Статистика</h3>
+        <div class="stats-details">
+            <div class="stats-info">
+                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Watching">
+                    <div class="stat-item"><span class="stat-square watching"></span>Дивлюсь: <span id="watchingCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Watching)</span></div>
+                </a>
+                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Planned">
+                    <div class="stat-item"><span class="stat-square planned"></span>В планах: <span id="plannedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Planned)</span></div>
+                </a>
+                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Viewed">
+                    <div class="stat-item"><span class="stat-square watched"></span>Переглянуто: <span id="viewedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Viewed)</span></div>
+                </a>
+                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Postponed">
+                    <div class="stat-item"><span class="stat-square postponed"></span>Відкладено: <span id="postponedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Postponed)</span></div>
+                </a>
+                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Abandoned">
+                    <div class="stat-item"><span class="stat-square dropped"></span>Кинуто: <span id="abandonedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Abandoned)</span></div>
+                </a>
+            </div>
+            <div class="stats-chart">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
