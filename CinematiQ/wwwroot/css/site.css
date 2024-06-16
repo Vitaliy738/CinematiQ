@@ -237,6 +237,7 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap; 
 }
 
 .left-nav,
@@ -254,6 +255,44 @@ body {
   flex: 1;
   justify-content: center;
 }
+
+
+.right-nav {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+
+@media (max-width: 768px) {
+  .menunav_top {
+    flex-direction: column;
+  }
+
+  .left-nav,
+  .center-nav,
+  .right-nav {
+    justify-content: center;
+    margin-bottom: 10px; 
+  }
+  
+  .left-nav, .right-nav {
+    order: 1; 
+  }
+  
+  .center-nav {
+    order: 0; 
+  }
+}
+
+@media (max-width: 480px) {
+  .left-nav li,
+  .center-nav li,
+  .right-nav li {
+    margin-bottom: 5px; 
+  }
+}
+
+
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
