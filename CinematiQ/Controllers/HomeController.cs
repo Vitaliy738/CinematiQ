@@ -53,12 +53,21 @@ namespace CinematiQ.Controllers
             var user = await _context.ApplicationIdentityUser
                 .AsNoTracking()
                 .Include(u => u.MovieMarkers)
+                .Include(u => u.LastWatchedMovies)
+                .ThenInclude(u => u.Movie)
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user == null)
             {
                 return NotFound();
             }
+            
+            user.LastWatchedMovies = user.LastWatchedMovies
+                .OrderByDescending(lwm => lwm.Date)
+                .GroupBy(lwm => lwm.Movie.Id)
+                .Select(g => g.First())
+                .Take(5)
+                .ToList();
             
             return View(user); 
         }

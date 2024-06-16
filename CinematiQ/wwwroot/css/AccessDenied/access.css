@@ -27,13 +27,14 @@
 }
 
 h1 {
-    font-size: 200px;
-    -webkit-text-stroke: 5px white;
+    font-size: 130px;
+    -webkit-text-stroke: 4px white;
+    -webkit-text-stroke-color: red;
     color: transparent;
 }
 
 p {
-    font-size: 24px;
+    font-size: 32px;
     color: white;
 }
 

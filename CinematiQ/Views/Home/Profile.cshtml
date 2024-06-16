@@ -26,8 +26,17 @@
         <img src="/images/icon_profile.png" alt="User Photo" class="profile-photo">
         <div class="profile-details">
             <h3>@Model.Name</h3>
+            
+            @{
+                if (!string.IsNullOrEmpty(Model.Status))
+                {
+                    <h5 class="my-3">"@Model.Status"</h5>
+                }
+            }
+            
             <p>Електронна пошта:</p>
             <div class="profile-data">@Model.Email</div>
+            
             @{
                 if (!string.IsNullOrEmpty(Model.PhoneNumber))
                 {
@@ -35,6 +44,7 @@
                     <div class="profile-data">@Model.PhoneNumber</div>
                 }
             }
+            
             @{
                 if (!string.IsNullOrEmpty(Model.Location))
                 {

@@ -20,6 +20,10 @@
                 <label asp-for="Input.Name" class="form-label"></label>
             </div>
             <div class="form-floating mb-3">
+                <input asp-for="Input.Status" class="form-control"/>
+                <label asp-for="Input.Status" class="form-label"></label>
+            </div>
+            <div class="form-floating mb-3">
                 <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Введіть ваш номер телефону."/>
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>

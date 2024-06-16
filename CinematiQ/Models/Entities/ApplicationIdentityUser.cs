@@ -5,10 +5,25 @@ namespace CinematiQ.Models.Entities
 {
     public class ApplicationIdentityUser : IdentityUser
     {
-        public string Name { get; set; }
-        public string Location { get; set; }
+        [MaxLength(50)]
+        public string? Name { get; set; }
+        
+        [MaxLength(50)]
+        public string? Location { get; set; }
+        
+        [MaxLength(50)]
+        public string? Status { get; set; }
+
+        public bool PublicLastWatchedMovies { get; set; } = true;
+        
+        public bool PublicMovieMarkers { get; set; } = true;
+
+        public bool PublicStatus { get; set; } = true;
+        
         public List<MovieMarker> MovieMarkers { get; set; } = [];
+        
         public List<LastWatchedMovie> LastWatchedMovies { get; set; } = [];
+        
         public List<Comment> Comments { get; set; } = [];
         
         public List<PlotReview> PlotReviews { get; set; } = [];

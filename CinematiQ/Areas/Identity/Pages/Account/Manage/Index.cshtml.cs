@@ -44,8 +44,13 @@ namespace CinematiQ.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Номер телефону")]
             public string PhoneNumber { get; set; }
             
+            [MaxLength(50)]
             [Display(Name = "Логін")]
             public string Name { get; set; }
+            
+            [MaxLength(50)]
+            [Display(Name = "Статус")]
+            public string Status { get; set; }
         }
 
         private async Task LoadAsync(ApplicationIdentityUser user)
@@ -58,7 +63,8 @@ namespace CinematiQ.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                Name = user.Name
+                Name = user.Name,
+                Status = user.Status
             };
         }
 
@@ -102,11 +108,16 @@ namespace CinematiQ.Areas.Identity.Pages.Account.Manage
             if (Input.Name != user.Name)
             {
                 user.Name = Input.Name;
-                await _context.SaveChangesAsync();
             }
-
+            
+            if (Input.Status != user.Status)
+            {
+                user.Status = Input.Status;
+            }
+            
+            await _context.SaveChangesAsync();
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Зміни було успішно збережено";
             return RedirectToPage();
         }
     }

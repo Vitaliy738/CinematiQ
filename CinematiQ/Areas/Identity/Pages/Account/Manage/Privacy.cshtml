@@ -1,0 +1,48 @@
+@page
+@model PrivacyModel
+@{
+ViewData["Title"] = "Privacy";
+ViewData["ActivePage"] = ManageNavPages.Privacy;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-check mb-3"
+                 data-bs-toggle="tooltip" data-bs-placement="top"
+                 data-bs-custom-class="custom-tooltip"
+                 data-bs-title="Інші користувачі зможуть переглядати ваші остані перегляди">
+                <input class="form-check-input" type="checkbox" asp-for="Input.PublicLastWatchedMovies" id="lastWatchedMovies">
+                <label class="form-check-label" for="lastWatchedMovies">
+                    Видимість ваших останіх переглядів.
+                </label>
+            </div>
+            <div class="form-check mb-3"
+                 data-bs-toggle="tooltip" data-bs-placement="top"
+                 data-bs-custom-class="custom-tooltip"
+                 data-bs-title="Інші користувачі зможуть переглядати ваші закладки">
+                <input class="form-check-input" type="checkbox" asp-for="Input.PublicMovieMarkers" id="moviemarkers">
+                <label class="form-check-label" for="moviemarkers">
+                    Видимість вашох закладок.
+                </label>
+            </div>
+            <div class="form-check mb-3"
+                 data-bs-toggle="tooltip" data-bs-placement="top"
+                 data-bs-custom-class="custom-tooltip"
+                 data-bs-title="Інші користувачі будуть бачити ваш статус">
+                <input class="form-check-input" type="checkbox" asp-for="Input.PublicStatus" id="status">
+                <label class="form-check-label" for="status">
+                    Видимість вашого статусу.
+                </label>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Зберегти зміни</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

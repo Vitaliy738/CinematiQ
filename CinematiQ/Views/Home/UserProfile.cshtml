@@ -26,32 +26,59 @@
         <img src="/images/icon_profile.png" alt="User Photo" class="profile-photo">
         <div class="profile-details">
             <h3>@Model.Name</h3>
+
+            @{
+                if (!string.IsNullOrEmpty(Model.Status) && Model.PublicStatus)
+                {
+                    <h5 class="my-3">"@Model.Status"</h5>
+                }
+            }
         </div>
 
     </div>
-    <div class="statistics">
-        <h3>Статистика</h3>
-        <div class="stats-details">
-            <div class="stats-info">
-                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Watching">
-                    <div class="stat-item"><span class="stat-square watching"></span>Дивлюсь: <span id="watchingCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Watching)</span></div>
-                </a>
-                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Planned">
-                    <div class="stat-item"><span class="stat-square planned"></span>В планах: <span id="plannedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Planned)</span></div>
-                </a>
-                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Viewed">
-                    <div class="stat-item"><span class="stat-square watched"></span>Переглянуто: <span id="viewedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Viewed)</span></div>
-                </a>
-                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Postponed">
-                    <div class="stat-item"><span class="stat-square postponed"></span>Відкладено: <span id="postponedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Postponed)</span></div>
-                </a>
-                <a class="bookmarks-statistic" asp-controller="Home" asp-action="Abandoned">
-                    <div class="stat-item"><span class="stat-square dropped"></span>Кинуто: <span id="abandonedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Abandoned)</span></div>
-                </a>
+    
+    @{
+        if (Model.PublicMovieMarkers)
+        {
+            <div class="statistics">
+                <h3>Статистика</h3>
+                <div class="stats-details">
+                    <div class="stats-info">
+                        <div class="stat-item"><span class="stat-square watching"></span>Дивлюсь: <span id="watchingCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Watching)</span></div>
+                        <div class="stat-item"><span class="stat-square planned"></span>В планах: <span id="plannedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Planned)</span></div>
+                        <div class="stat-item"><span class="stat-square watched"></span>Переглянуто: <span id="viewedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Viewed)</span></div>
+                        <div class="stat-item"><span class="stat-square postponed"></span>Відкладено: <span id="postponedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Postponed)</span></div>
+                        <div class="stat-item"><span class="stat-square dropped"></span>Кинуто: <span id="abandonedCount">@Model.MovieMarkers.Count(m => m.Type == MovieMarkerType.Abandoned)</span></div>
+                    </div>
+                    <div class="stats-chart">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
             </div>
-            <div class="stats-chart">
-                <canvas id="myChart"></canvas>
+        }
+    }
+    
+
+    @{
+        if (Model.LastWatchedMovies.Any() && Model.PublicLastWatchedMovies)
+        {
+            <div class="recent-views">
+                <h3>Останні перегляди</h3>
+                <ul class="recent-list">
+                    @{
+                        foreach (var lastWatched in Model.LastWatchedMovies)
+                        {
+                            <li>
+                                <img src="@lastWatched.Movie.Poster" alt="@lastWatched.Movie.Title">
+                                <div>
+                                    <a asp-controller="Films" asp-action="Film" asp-route-id="@lastWatched.Movie.Id">@lastWatched.Movie.Title</a>
+                                    <p class="date">@lastWatched.Date.ToString("dd/MM/yyyy")</p>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>
             </div>
-        </div>
-    </div>
+        }
+    }
 </div>
