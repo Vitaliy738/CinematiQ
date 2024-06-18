@@ -174,6 +174,7 @@ public class FilmsController : Controller
             .ToListAsync();
 
         pageVm.Movie = movie;
+        pageVm.SimilarMovies = _context.Movies.AsNoTracking().Take(4).ToList();
 
         if (!User.Identity?.IsAuthenticated ?? true)
         {

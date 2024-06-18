@@ -225,7 +225,6 @@
                 </div>
             </div>
         </div>
-
         <div id="alertRatingBlock"></div>
     </div>
     
@@ -256,51 +255,35 @@
             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
-    <div class="similar-movies">
-        <h2>Схожі фільми</h2>
-        <div class="similar-movies-grid">
-            <div class="similar-movie-item">
-                <img src="/images/Янголи смерті.png" alt="Японія смерті">
-                <div class="similar-movie-info">
-                    <div class="my-3">
-                        <p ><strong>Японія смерті</strong></p>
-                        <p class="alternative-title">Death Angels</p>
-                    </div>
-                    <p class="rating mt-2">★ 7.1/10</p>
+    
+    @{
+        if (Model.SimilarMovies.Any())
+        {
+            <div class="similar-movies">
+                <h2>Схожі фільми</h2>
+                <div class="similar-movies-grid">
+                    @{
+                        foreach (var similarMovie in Model.SimilarMovies)
+                        {
+                            <div class="similar-movie-item">
+                                <a asp-action="Film" asp-route-id="@similarMovie.Id">
+                                    <img src="@similarMovie.Poster" alt="Японія смерті">
+                                </a>
+                                <div class="similar-movie-info">
+                                    <div class="mt-2">
+                                        <p ><strong>@similarMovie.Title</strong></p>
+                                        <p class="alternative-title">@similarMovie.AlterTitle</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    
                 </div>
             </div>
-            <div class="similar-movie-item">
-                <img src="/images/Злочинці.png" alt="Злочинні">
-                <div class="similar-movie-info">
-                    <div class="my-3">
-                        <p><strong>Злочинні</strong></p>
-                        <p class="alternative-title">Criminals</p>
-                    </div>
-                    <p class="rating mt-2">★ 8.3/10</p>
-                </div>
-            </div>
-            <div class="similar-movie-item">
-                <img src="/images/Арчер.png" alt="Арчер">
-                <div class="similar-movie-info">
-                    <div class="my-3">
-                        <p><strong>Арчер</strong></p>
-                        <p class="alternative-title">Archer</p>
-                    </div>
-                    <p class="rating mt-2">★ 8.6/10</p>
-                </div>
-            </div>
-            <div class="similar-movie-item">
-                <img src="/images/Барва пурпурова.png" alt="Барва пурпурова">
-                <div class="similar-movie-info">
-                    <div class="my-3">
-                        <p><strong>Барва пурпурова</strong></p>
-                        <p class="alternative-title">The Color Purple</p>
-                    </div>
-                    <p class="rating mt-2">★ 7.7/10</p>
-                </div>
-            </div>
-        </div>
-    </div>
+        }
+    }
+    
     <div class="comments-section">
         <h2>Відгуки інших користувачів</h2>
         <div class="input-container">
